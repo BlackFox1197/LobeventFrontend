@@ -15,7 +15,7 @@ class EventListState extends State<EventList>{
       appBar: new AppBar(
         title: Text('Events'),
       ),
-      body: _buildEventList()
+      body: _textfield()
     );
   }
   Widget _buildEventList(){
@@ -28,5 +28,10 @@ class EventListState extends State<EventList>{
         }
     );
 
+  }
+  Widget _textfield(){
+    return Container(
+      child: Text(),
+    );
   }
 }

@@ -11,4 +11,5 @@ class Event {
       date: json['date'] as String,
     );
   }
+
 }

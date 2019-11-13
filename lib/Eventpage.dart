@@ -26,7 +26,7 @@ class EventListState extends State<EventList> {
     if (response.statusCode == 200) {
       // If server returns an OK response, parse the JSON.
 
-      return await EventsList.fromJson(json.decode(response.body)).events;
+      return EventsList.fromJson(json.decode(response.body)).events;
       // If server returns an OK response, parse the JSON.
       //return Event.fromJson(json.decode(response.body));
     } else {
@@ -45,38 +45,12 @@ class EventListState extends State<EventList> {
             future: event,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Text(snapshot.data.toString());
+
+                return Text(snapshot.data[0].name);
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }
               return CircularProgressIndicator();
             }));
-  }
-
-  Widget _buildEventList() {
-    return new ListView.builder(
-        padding: EdgeInsets.all(10.0),
-        itemBuilder: (context, index) {
-          return ListTile();
-        });
-  }
-  /*Widget buildEventL() {
-    FutureBuilder<Event>(
-        future: event,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return Text(snapshot.data.name);
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          }
-          return CircularProgressIndicator();
-    });
-  }*/
-
-  Widget _textfield() {
-    return Container(
-        child: Text(http.get('https:/192.168.0.141').toString()
-            //response = await http.get('https:/192.168.0.141'
-            ));
   }
 }

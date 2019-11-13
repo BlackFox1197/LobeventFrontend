@@ -12,13 +12,13 @@ class EventsList {
     return new EventsList(events);
   }
 }
-
 class Event {
   final int id;
   final String name;
   final String date;
 
   Event({this.id, this.name, this.date});
+
   factory Event.fromJson(Map<String, dynamic> json) {
     return Event(
       id: json['id'] as int,
@@ -26,4 +26,5 @@ class Event {
       date: json['date'] as String,
     );
   }
+
 }

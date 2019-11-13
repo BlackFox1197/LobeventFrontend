@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lobevent/Presentation/Eventpage.dart';
+import 'package:lobevent/Presentation/Content/Eventpage.dart';
 
 void main() => runApp(MyApp());
 

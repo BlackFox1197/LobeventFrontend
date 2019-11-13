@@ -30,9 +30,9 @@ class EventListState extends State<EventList> {
       final jsonO = json.decode(response.body);
       for (final event in jsonO) {
         eventList.add(Event.fromJson(event));
-        log(event);
       }
-      return eventList;
+      //Future<List<Event>> e = eventList;
+      return  eventList;
       // If server returns an OK response, parse the JSON.
       //return Event.fromJson(json.decode(response.body));
     } else {
@@ -52,7 +52,7 @@ class EventListState extends State<EventList> {
             future: event,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Text(snapshot.data.toString());
+                return Text(snapshot.data[0].toString());
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }

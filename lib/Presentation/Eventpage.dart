@@ -3,7 +3,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:lobevent/Models/Event.dart';
+import 'package:lobevent/Buissness/Models/Event.dart';
 import 'package:http/http.dart' as http;
 
 class EventList extends StatefulWidget {

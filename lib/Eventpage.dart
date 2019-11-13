@@ -21,18 +21,12 @@ class EventListState extends State<EventList> {
   }
 
   Future<List<Event>> fetchPost() async {
-    final response =
-    await http.get('http://172.18.39.33:8888/events');
+    final response = await http.get('http://192.168.0.100:8888/events');
 
     if (response.statusCode == 200) {
       // If server returns an OK response, parse the JSON.
-      var eventList = new List();
-      final jsonO = json.decode(response.body);
-      for (final event in jsonO) {
-        eventList.add(Event.fromJson(event));
-        log(event);
-      }
-      return eventList;
+
+      return await EventsList.fromJson(json.decode(response.body)).events;
       // If server returns an OK response, parse the JSON.
       //return Event.fromJson(json.decode(response.body));
     } else {
@@ -40,7 +34,6 @@ class EventListState extends State<EventList> {
       throw Exception('Failed to load post');
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -85,14 +78,5 @@ class EventListState extends State<EventList> {
         child: Text(http.get('https:/192.168.0.141').toString()
             //response = await http.get('https:/192.168.0.141'
             ));
-
-
-
   }
-
-
-
-
 }
-
-

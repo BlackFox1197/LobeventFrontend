@@ -1,5 +1,7 @@
 import 'data.dart';
+import 'package:lobevent/Presentation/Content/Eventpage.dart';
 import 'package:flutter/material.dart';
+import 'package:lobevent/Data/Types/Event.dart';
 import 'styles.dart';
 import 'package:flutter/scheduler.dart';
 
@@ -21,6 +23,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
   List data = imageData;
   double _appBarHeight = 256.0;
   AppBarBehavior _appBarBehavior = AppBarBehavior.pinned;
+  Future<List<Event>> event;
 
   void initState() {
     _containerController = new AnimationController(
@@ -50,6 +53,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
       });
     });
     _containerController.forward();
+    event = EventListState().fetchPost();
   }
 
   @override
@@ -60,7 +64,6 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    timeDilation = 0.7;
     int img = data.indexOf(type);
     //print("detail");
     return new Theme(
@@ -184,8 +187,17 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ),
-                                  new Text(
-                                      "It's party, party, party like a nigga just got out of jail Flyin' in my 'Rari like a bat that just flew outta hell I'm from the east of ATL, but ballin' in the Cali hills Lil mama booty boomin', that bitch movin' and she standin' still I know these bitches choosin' me, but I got 80 on me still. host for the purposes of socializing, conversation, recreation, or as part of a festival or other commemoration of a special occasion. A party will typically feature food and beverages, and often music and dancing or other forms of entertainment.  "),
+                                  //party nigga nigga textbox
+                                  FutureBuilder<List<Event>>(
+                                      future: event,
+                                      builder: (context, snapshot) {
+                                        if (snapshot.hasData) {
+                                          return Text(snapshot.data[0].name);
+                                        } else if (snapshot.hasError) {
+                                          return Text("${snapshot.error}");
+                                        }
+                                        return CircularProgressIndicator();
+                                      }),
                                   new Container(
                                     margin: new EdgeInsets.only(top: 25.0),
                                     padding: new EdgeInsets.only(

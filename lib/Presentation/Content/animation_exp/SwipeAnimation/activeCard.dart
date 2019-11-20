@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'detail.dart';
 import 'package:flutter/material.dart';
+import 'package:lobevent/Presentation/Content/animation_exp/SwipeAnimation/detail.dart';
 
 Positioned cardDemo(
     DecorationImage img,
@@ -58,8 +59,8 @@ Positioned cardDemo(
                 //     new MaterialPageRoute(
                 //         builder: (context) => new DetailPage(type: img)));
                 Navigator.of(context).push(new PageRouteBuilder(
-                      pageBuilder: (_, __, ___) => new DetailPage(type: img),
-                    ));
+                  pageBuilder: (_, __, ___) => new DetailPage(type: img),
+                ));
               },
               child: new Card(
                 color: Colors.transparent,

@@ -21,9 +21,15 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
   DecorationImage type;
   _DetailPageState({this.type});
   List data = imageData;
+  int eventIndex = 0;
+
   double _appBarHeight = 256.0;
   AppBarBehavior _appBarBehavior = AppBarBehavior.pinned;
   Future<List<Event>> event;
+
+  void eventIndexIncrement(){
+    eventIndex=eventIndex+1;
+  }
 
   void initState() {
     _containerController = new AnimationController(
@@ -53,6 +59,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
       });
     });
     _containerController.forward();
+
     event = EventListState().fetchPost();
   }
 
@@ -158,7 +165,20 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                                             new Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
-                                              child: new Text("10:00  AM"),
+                                              //Datum des Events als Text
+                                              child: FutureBuilder<List<Event>>(
+                                                  future: event,
+                                                  builder: (context, snapshot) {
+                                                    if (snapshot.hasData) {
+                                                      return Text(snapshot
+                                                          .data[0].date);
+                                                    } else if (snapshot
+                                                        .hasError) {
+                                                      return Text(
+                                                          "${snapshot.error}");
+                                                    }
+                                                    return CircularProgressIndicator();
+                                                  }),
                                             )
                                           ],
                                         ),
@@ -187,7 +207,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ),
-                                  //party nigga nigga textbox
+                                  //About Textbox mit Eventnamen
                                   FutureBuilder<List<Event>>(
                                       future: event,
                                       builder: (context, snapshot) {

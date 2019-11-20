@@ -3,7 +3,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:lobevent/Data/Types/Event.dart';
+import 'package:lobevent/Data/Types/event_list.dart.dart';
 import 'package:dio/dio.dart';
 
 class EventList extends StatefulWidget {
@@ -24,7 +24,6 @@ class EventListState extends State<EventList> {
     var dio = Dio();
     final response = await dio.get('http://192.168.0.100:8888/events');
 
-    if (response.statusCode == 200) {
       // If server returns an OK response, parse the JSON.
 
       return EventsList.fromJson(json.decode(response.data)).events;

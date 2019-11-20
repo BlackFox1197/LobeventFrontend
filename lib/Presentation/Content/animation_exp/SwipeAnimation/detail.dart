@@ -9,26 +9,26 @@ class DetailPage extends StatefulWidget {
   final DecorationImage type;
   const DetailPage({Key key, this.type}) : super(key: key);
   @override
-  _DetailPageState createState() => new _DetailPageState(type: type);
+  DetailPageState createState() => new DetailPageState(type: type);
 }
 
 enum AppBarBehavior { normal, pinned, floating, snapping }
 
-class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
+class DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
   AnimationController _containerController;
   Animation<double> width;
   Animation<double> heigth;
   DecorationImage type;
-  _DetailPageState({this.type});
+  DetailPageState({this.type});
   List data = imageData;
-  int eventIndex = 0;
 
+  int eventIndex = 0;
   double _appBarHeight = 256.0;
   AppBarBehavior _appBarBehavior = AppBarBehavior.pinned;
   Future<List<Event>> event;
 
-  void eventIndexIncrement(){
-    eventIndex=eventIndex+1;
+  void eventIndexIncrement() {
+    eventIndex = eventIndex + 1;
   }
 
   void initState() {
@@ -171,7 +171,8 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                                                   builder: (context, snapshot) {
                                                     if (snapshot.hasData) {
                                                       return Text(snapshot
-                                                          .data[0].date);
+                                                          .data[eventIndex]
+                                                          .date);
                                                     } else if (snapshot
                                                         .hasError) {
                                                       return Text(
@@ -212,7 +213,8 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                                       future: event,
                                       builder: (context, snapshot) {
                                         if (snapshot.hasData) {
-                                          return Text(snapshot.data[0].name);
+                                          return Text(
+                                              snapshot.data[eventIndex].name);
                                         } else if (snapshot.hasError) {
                                           return Text("${snapshot.error}");
                                         }

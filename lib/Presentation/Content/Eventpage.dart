@@ -4,7 +4,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:lobevent/Data/Types/Event.dart';
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 
 class EventList extends StatefulWidget {
   @override
@@ -21,12 +21,13 @@ class EventListState extends State<EventList> {
   }
 
   Future<List<Event>> fetchPost() async {
-    final response = await http.get('http://192.168.0.100:8888/events');
+    var dio = Dio();
+    final response = await dio.get('http://192.168.0.100:8888/events');
 
     if (response.statusCode == 200) {
       // If server returns an OK response, parse the JSON.
 
-      return EventsList.fromJson(json.decode(response.body)).events;
+      return EventsList.fromJson(json.decode(response.data)).events;
       // If server returns an OK response, parse the JSON.
       //return Event.fromJson(json.decode(response.body));
     } else {

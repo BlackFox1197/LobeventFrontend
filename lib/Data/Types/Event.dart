@@ -12,6 +12,12 @@ class Event {
       date: json['date'] as String,
     );
   }
+  Map<String, dynamic> toJson() =>
+      {
+        'name' : name,
+        'date' : date,
+        'id'   : id
+      };
 
 }
 

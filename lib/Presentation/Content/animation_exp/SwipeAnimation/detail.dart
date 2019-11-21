@@ -209,7 +209,7 @@ class DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                                     ),
                                   ),
                                   //About Textbox mit Eventnamen
-                                  FutureBuilder<List<Event>>(
+                                  /*FutureBuilder<List<Event>>(
                                       future: event,
                                       builder: (context, snapshot) {
                                         if (snapshot.hasData) {
@@ -219,8 +219,9 @@ class DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                                           return Text("${snapshot.error}");
                                         }
                                         return CircularProgressIndicator();
-                                      }),
-                                  new Container(
+                                      }),*/
+
+                                  child: new Container(
                                     margin: new EdgeInsets.only(top: 25.0),
                                     padding: new EdgeInsets.only(
                                         top: 5.0, bottom: 10.0),
@@ -326,7 +327,7 @@ class DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                       ))
                 ],
               ),
-            ),
+            ),9
           ),
         ),
       ),

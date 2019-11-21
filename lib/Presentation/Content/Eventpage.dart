@@ -25,7 +25,6 @@ class EventListState extends State<EventList> {
     var dio = Dio();
     final response = await http.get('http://192.168.0.100:8888/events');
 
-    if (response.statusCode == 200) {
       // If server returns an OK response, parse the JSON.
 
       return EventsList.fromJson(json.decode(response.body)).events;

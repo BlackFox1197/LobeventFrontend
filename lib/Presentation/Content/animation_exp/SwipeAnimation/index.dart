@@ -159,8 +159,9 @@ class CardDemoState extends State<CardDemo> with TickerProviderStateMixin {
           title: new Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              //Oberer Text des Swipers
               new Text(
-                "EVENTS",
+                "LOBEVENTS",
                 style: new TextStyle(
                     fontSize: 12.0,
                     letterSpacing: 3.5,

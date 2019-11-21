@@ -1,5 +1,7 @@
 import 'data.dart';
+import 'package:lobevent/Presentation/Content/Eventpage.dart';
 import 'package:flutter/material.dart';
+import 'package:lobevent/Data/Types/Event.dart';
 import 'styles.dart';
 import 'package:flutter/scheduler.dart';
 
@@ -7,20 +9,27 @@ class DetailPage extends StatefulWidget {
   final DecorationImage type;
   const DetailPage({Key key, this.type}) : super(key: key);
   @override
-  _DetailPageState createState() => new _DetailPageState(type: type);
+  DetailPageState createState() => new DetailPageState(type: type);
 }
 
 enum AppBarBehavior { normal, pinned, floating, snapping }
 
-class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
+class DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
   AnimationController _containerController;
   Animation<double> width;
   Animation<double> heigth;
   DecorationImage type;
-  _DetailPageState({this.type});
+  DetailPageState({this.type});
   List data = imageData;
+
+  int eventIndex = 0;
   double _appBarHeight = 256.0;
   AppBarBehavior _appBarBehavior = AppBarBehavior.pinned;
+  Future<List<Event>> event;
+
+  void eventIndexIncrement() {
+    eventIndex = eventIndex + 1;
+  }
 
   void initState() {
     _containerController = new AnimationController(
@@ -50,6 +59,8 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
       });
     });
     _containerController.forward();
+
+    event = EventListState().fetchPost();
   }
 
   @override
@@ -60,7 +71,6 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    timeDilation = 0.7;
     int img = data.indexOf(type);
     //print("detail");
     return new Theme(
@@ -155,7 +165,21 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                                             new Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
-                                              child: new Text("10:00  AM"),
+                                              //Datum des Events als Text
+                                              child: FutureBuilder<List<Event>>(
+                                                  future: event,
+                                                  builder: (context, snapshot) {
+                                                    if (snapshot.hasData) {
+                                                      return Text(snapshot
+                                                          .data[eventIndex]
+                                                          .date);
+                                                    } else if (snapshot
+                                                        .hasError) {
+                                                      return Text(
+                                                          "${snapshot.error}");
+                                                    }
+                                                    return CircularProgressIndicator();
+                                                  }),
                                             )
                                           ],
                                         ),
@@ -184,8 +208,18 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ),
-                                  new Text(
-                                      "It's party, party, party like a nigga just got out of jail Flyin' in my 'Rari like a bat that just flew outta hell I'm from the east of ATL, but ballin' in the Cali hills Lil mama booty boomin', that bitch movin' and she standin' still I know these bitches choosin' me, but I got 80 on me still. host for the purposes of socializing, conversation, recreation, or as part of a festival or other commemoration of a special occasion. A party will typically feature food and beverages, and often music and dancing or other forms of entertainment.  "),
+                                  //About Textbox mit Eventnamen
+                                  FutureBuilder<List<Event>>(
+                                      future: event,
+                                      builder: (context, snapshot) {
+                                        if (snapshot.hasData) {
+                                          return Text(
+                                              snapshot.data[eventIndex].name);
+                                        } else if (snapshot.hasError) {
+                                          return Text("${snapshot.error}");
+                                        }
+                                        return CircularProgressIndicator();
+                                      }),
                                   new Container(
                                     margin: new EdgeInsets.only(top: 25.0),
                                     padding: new EdgeInsets.only(

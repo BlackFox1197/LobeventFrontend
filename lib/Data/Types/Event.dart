@@ -1,4 +1,6 @@
-class Event {
+import 'MyType.dart';
+
+class Event extends MyType{
   final int id;
   final String name;
   final String date;

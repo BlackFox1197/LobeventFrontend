@@ -6,5 +6,5 @@ class Communication_Base{
     this.client = new Dio();
   }
 
-  Future<dynamic>
+  //dynamic HandleError(response) async
 }

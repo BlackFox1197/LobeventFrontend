@@ -60,7 +60,7 @@ class DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
     });
     _containerController.forward();
 
-    event = EventListState().fetchPost();
+    //event = EventListState().fetchPost();
   }
 
   @override
@@ -221,7 +221,7 @@ class DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                                         return CircularProgressIndicator();
                                       }),*/
 
-                                  child: new Container(
+                                  new Container(
                                     margin: new EdgeInsets.only(top: 25.0),
                                     padding: new EdgeInsets.only(
                                         top: 5.0, bottom: 10.0),
@@ -327,7 +327,7 @@ class DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                       ))
                 ],
               ),
-            ),9
+            ),
           ),
         ),
       ),

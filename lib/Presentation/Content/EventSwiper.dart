@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:lobevent/Data/Types/Event.dart';
+import 'package:lobevent/Services/Communication/EventCommunicator.dart';
 
+class EventSwiper extends StatefulWidget {
+  @override
+  EventSwiperState createState() => EventSwiperState();
+}
 
-class EventSwiper extends StatelessWidget {
-  List cards =new List.generate(20, (i) => new CustomCard());
+class EventSwiperState extends State<EventSwiper> {
+  List cards =new List.generate(20, (i) => new CustomCard()).toList();
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
         body: Container(
           child: Stack(

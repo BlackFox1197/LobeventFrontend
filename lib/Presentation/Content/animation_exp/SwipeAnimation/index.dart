@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:lobevent/Presentation/Content/Eventpage.dart';
+
 import 'data.dart';
 import 'dummyCard.dart';
 import 'activeCard.dart';
@@ -6,6 +8,7 @@ import 'activeCard.dart';
 //import 'package:animation_exp/PageReveal/page_main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
+import 'package:lobevent/Presentation/Content/animation_exp/SwipeAnimation/detail.dart';
 
 class CardDemo extends StatefulWidget {
   @override
@@ -42,7 +45,6 @@ class CardDemoState extends State<CardDemo> with TickerProviderStateMixin {
         if (rotate.isCompleted) {
           var i = data.removeLast();
           data.insert(0, i);
-
           _buttonController.reset();
         }
       });

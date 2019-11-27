@@ -14,6 +14,15 @@ class EventList extends StatefulWidget {
 
 class EventListState extends State<EventList> {
   Future<List<Event>> event;
+  int eventIndex = 0;
+
+  void eventIndexIncrement() {
+    eventIndex = eventIndex + 1;
+  }
+
+  int eventIndexGet() {
+    return eventIndex;
+  }
 
   @override
   void initState() {

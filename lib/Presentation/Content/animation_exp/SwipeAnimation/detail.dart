@@ -22,14 +22,9 @@ class DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
   DetailPageState({this.type});
   List data = imageData;
 
-  int eventIndex = 0;
   double _appBarHeight = 256.0;
   AppBarBehavior _appBarBehavior = AppBarBehavior.pinned;
   Future<List<Event>> event;
-
-  void eventIndexIncrement() {
-    eventIndex = eventIndex + 1;
-  }
 
   void initState() {
     _containerController = new AnimationController(
@@ -170,9 +165,7 @@ class DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                                                   future: event,
                                                   builder: (context, snapshot) {
                                                     if (snapshot.hasData) {
-                                                      return Text(snapshot
-                                                          .data[eventIndex]
-                                                          .date);
+                                                      return Text("");
                                                     } else if (snapshot
                                                         .hasError) {
                                                       return Text(
@@ -213,8 +206,11 @@ class DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                                       future: event,
                                       builder: (context, snapshot) {
                                         if (snapshot.hasData) {
-                                          return Text(
-                                              snapshot.data[eventIndex].name);
+                                          return Text(snapshot
+                                              .data[EventListState()
+                                                      .eventIndexGet() +
+                                                  1]
+                                              .name);
                                         } else if (snapshot.hasError) {
                                           return Text("${snapshot.error}");
                                         }

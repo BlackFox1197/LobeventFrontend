@@ -1,4 +1,5 @@
-/*import 'dart:convert';
+/*
+import 'dart:convert';
 import 'dart:async';
 import 'dart:developer';
 
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:lobevent/Data/Types/Event.dart';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
+import 'package:lobevent/Services/Communication/EventCommunicator.dart';
 
 class EventList extends StatefulWidget {
   @override
@@ -32,17 +34,14 @@ class EventListState extends State<EventList> {
 
   Future<List<Event>> fetchPost() async {
     var dio = Dio();
-    final response = await http.get('http://192.168.0.100:8888/events');
-
+   final response = await http.get('http://192.168.0.100:8888/events');
+   //List<dynamic> r = (json.decode(response.body));
+  // List<Event> d = r.map((i) => Event.fromJson(i)).toList();
       // If server returns an OK response, parse the JSON.
-
-      return EventsList.fromJson(json.decode(response.body)).events;
+    return await (new EventCommunicator()).get();
+    //return d;
       // If server returns an OK response, parse the JSON.
       //return Event.fromJson(json.decode(response.body));
-    } else {
-      // If that response was not OK, throw an error.
-      throw Exception('Failed to load post');
-    }
   }
 
   @override
@@ -63,5 +62,5 @@ class EventListState extends State<EventList> {
             }));
   }
 }
-
 */
+

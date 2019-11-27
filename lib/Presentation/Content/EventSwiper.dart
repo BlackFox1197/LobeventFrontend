@@ -12,40 +12,59 @@ class EventSwiper extends StatefulWidget {
 class EventSwiperState extends State<EventSwiper> {
 
   EventSwiperState(){
-    activeData = cards.removeAt(0).toString();
+    communicator = new EventCommunicator();
+    eventsFutures = communicator.get();
   }
-  List cards = new List.generate(20, (i) => (new Random()).nextInt(1000)).toList();
-  String activeData;
+  EventCommunicator communicator;
+  Future<List<Event>> eventsFutures;
+  List<Event> eventlist;
+  Event activeData;
 
-  String next() {
-    return cards.removeAt(0).toString();
+  init1(List<Event> events) {
+    eventlist = events;
+    activeData = eventlist[0];
+  }
+
+  Event next() {
+    return eventlist.removeAt(0);
   }
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: Container(
-          child:  Card(
+      body: FutureBuilder<List<Event>>(
+        future: eventsFutures,
+        builder: (context, snapshot){
+            if(snapshot.hasData){
+              init1(snapshot.data);
+              return getContent();
+            } else if (snapshot.hasError) {
+              return Text("${snapshot.error}");
+            }
+            return CircularProgressIndicator();
+      }
+    )
+    );
+  }
 
-
+  Widget getContent(){
+    return Container(
+        child:  Card(
             color: Colors.blueAccent,
             child: Container(
               width: 300,
               height: 400,
               child: MaterialButton(
-                child: Text(activeData),
+                child: Text(activeData.name),
                 onPressed: () {
                   setState(() {
                     activeData = next();
                   });
                 },
               ),
-          )
+            )
         )
-      )
     );
-
-
   }
 }
 

@@ -16,8 +16,9 @@ class EventCommunicator extends Communication_Base
   Future<List<Event>> get() async {
     final response = await client.get(URL);
     List<Event> events = new List<Event>(); //init the List
+    List<dynamic> intermeanList = response.data;
+    events = intermeanList.map((i) => Event.fromJson(i)).toList();
     //map the date form the decoded json to an list and call Event.fromJson for each of them
-    events = json.decode(response.data).map((i) => Event.fromJson(i)).toList();
     return events;
   }
 
@@ -26,7 +27,7 @@ class EventCommunicator extends Communication_Base
     final response = await client.get(URL +
         "/" +
         id.toString()); //assembling the string in the get() parameter for getting with id
-    Event event = Event.fromJson(json.decode(response.data));
+    Event event = Event.fromJson(response.data);
     return event;
   }
 

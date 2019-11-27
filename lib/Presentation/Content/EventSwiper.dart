@@ -26,6 +26,8 @@ class EventSwiperState extends State<EventSwiper> {
     return  Scaffold(
       body: Container(
           child:  Card(
+
+
             color: Colors.blueAccent,
             child: Container(
               width: 300,

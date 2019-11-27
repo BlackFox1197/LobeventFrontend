@@ -24,7 +24,7 @@ class UserEventStatusCommunicator extends Communication_Base
   }
 
 
-  //returns an single event given the id
+  ///returns an single event given the id
   Future<UserEventStatus> getByID(int id) async {
     final response = await client.get(URL +
         "/" +

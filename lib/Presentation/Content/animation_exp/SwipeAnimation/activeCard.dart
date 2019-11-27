@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'detail.dart';
 import 'package:flutter/material.dart';
-import 'package:lobevent/Presentation/Content/animation_exp/SwipeAnimation/detail.dart';
 
 Positioned cardDemo(
     DecorationImage img,
@@ -97,7 +96,6 @@ Positioned cardDemo(
                                   padding: new EdgeInsets.all(0.0),
                                   onPressed: () {
                                     swipeLeft();
-                                    DetailPageState().eventIndexIncrement();
                                   },
                                   child: new Container(
                                     height: 60.0,
@@ -117,8 +115,6 @@ Positioned cardDemo(
                                   padding: new EdgeInsets.all(0.0),
                                   onPressed: () {
                                     swipeRight();
-                                    //naechstes event per index ansprechen
-                                    DetailPageState().eventIndexIncrement();
                                   },
                                   child: new Container(
                                     height: 60.0,

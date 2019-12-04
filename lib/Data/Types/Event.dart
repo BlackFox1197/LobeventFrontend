@@ -1,10 +1,10 @@
 import 'MyType.dart';
 
 class Event extends MyType{
-  final int id;
-  final String name;
-  final DateTime date;
-  final int userId;
+  int id;
+  String name;
+  DateTime date;
+  int userId;
 
   Event({this.id, this.name, this.date, this.userId});
 

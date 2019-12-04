@@ -34,6 +34,7 @@ class EventCommunicator extends Communication_Base
   ///Posts an event to the WEB-API
   void post(Event event) async {
     //TODO: implement errorHandling
+    event.userId = 1;
     final String jsonEvent = jsonEncode(event.toJson());
     await client.post(URL, data: jsonEvent);
   }

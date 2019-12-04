@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:lobevent/Data/Types/Event.dart';
 import 'package:lobevent/Services/Communication/EventCommunicator.dart';
+import 'EventAdd.dart';
 
 class EventSwiper extends StatefulWidget {
   @override
@@ -10,8 +11,7 @@ class EventSwiper extends StatefulWidget {
 }
 
 class EventSwiperState extends State<EventSwiper> {
-
-  EventSwiperState(){
+  EventSwiperState() {
     communicator = new EventCommunicator();
     eventsFutures = communicator.get();
   }
@@ -31,61 +31,68 @@ class EventSwiperState extends State<EventSwiper> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: FutureBuilder<List<Event>>(
-        future: eventsFutures,
-        builder: (context, snapshot){
-            if(snapshot.hasData){
+    return Scaffold(
+        body: Column(
+            children: <Widget>[
+            FutureBuilder<List<Event>>(
+              future: eventsFutures,
+              builder: (context, snapshot) {
+            if (snapshot.hasData) {
               init1(snapshot.data);
               return getContent();
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
             }
             return CircularProgressIndicator();
-      }
-    )
-    );
-  }
-
-  Widget getContent(){
-    return Container(
-        child:  Card(
-            color: Colors.blueAccent,
-            child: Container(
-              width: 300,
-              height: 400,
-              child: MaterialButton(
-                child: Text(activeData.name),
+          }),
+              FloatingActionButton(
+                child: Icon(Icons.add),
                 onPressed: () {
-                  setState(() {
-                    activeData = next();
-                  });
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => EventAdd())
+                  );
                 },
-              ),
-            )
-        )
-    );
+
+              )
+    ]));
   }
-}
 
-class CustomCard extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-   return Card(
+  Widget getContent() {
+    return Center(
+        child: Container(
             child: Card(
-              color: Colors.blueAccent,
-              child: Container(
-                width: 300,
-                height: 400,
-                child: MaterialButton(
-                  child: Text( 'Next Event' ),
-                  onPressed: () {
-
-                  },
-                ),
-              ),
-            ),
-   );
-
+                color: Colors.blueAccent,
+                child: Container(
+                    width: 300,
+                    height: 400,
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: <Widget>[
+                          Text(activeData.name),
+                          MaterialButton(
+                            color: Colors.red,
+                            child: Icon(Icons.delete),
+                            height: 40.0,
+                            minWidth: 70.0,
+                            onPressed: () {
+                              setState(() {
+                                activeData = next();
+                              });
+                            },
+                          ),
+                          MaterialButton(
+                            color: Colors.green,
+                            child: Icon(Icons.add_circle),
+                            height: 40.0,
+                            minWidth: 70.0,
+                            onPressed: () {
+                              setState(() {
+                                activeData = next();
+                              });
+                            },
+                          )
+                        ])))));
   }
 }

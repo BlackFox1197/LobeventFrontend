@@ -12,13 +12,13 @@ class UserEventStatus extends MyType {
   factory UserEventStatus.fromJson(Map<String, dynamic> json) {
     return UserEventStatus(
       status: json['status'] as int,
-      userId: json['userId'] as String,
-      eventId: json['eventId'] as String,
+      userId: json['user']['id'] as String,
+      eventId: json['event']['id'] as String,
     );
   }
   Map<String, dynamic> toJson() => {
         'status': status,
-        'userId': userId,
-        'eventId': eventId,
+        'user': {'id' : userId},
+        'event': {'id' : eventId},
       };
 }

@@ -9,19 +9,20 @@ class Event extends MyType{
   Event({this.id, this.name, this.date, this.userId});
 
   factory Event.fromJson(Map<String, dynamic> json) {
-    return Event(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      date: json['date'] as DateTime,
-      userId: json['userId'] as int
+    final event = Event(
+        id: json['id'] as int,
+        name: json['name'] as String,
+        date: DateTime.parse(json['date']),
+        userId: json['user']['id'] as int
     );
+    return event;
   }
   Map<String, dynamic> toJson() =>
       {
         'name' : name,
         'date' : date,
         'id'   : id,
-        'userId': userId
+        'user': {'id': userId}
       };
 
 }

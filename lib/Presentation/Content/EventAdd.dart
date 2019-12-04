@@ -20,23 +20,27 @@ class EventAdd extends StatelessWidget {
           TextFormField(
             decoration: InputDecoration(labelText: 'Enter EventName'),
           ),
-          FlatButton(
-              onPressed: () {
-                DatePicker.showDateTimePicker(context,
-                    showTitleActions: true,
-                    minTime: DateTime(2020, 5, 5, 20, 50),
-                    maxTime: DateTime(2020, 6, 7, 05, 09), onChanged: (date) {
-                  print('change $date in time zone ' +
-                      date.timeZoneOffset.inHours.toString());
-                }, onConfirm: (date) {
-                  print('confirm $date');
-                }, locale: LocaleType.de);
-              },
-              child: Text(
-                'setDate',
-                style: TextStyle(color: Colors.grey),
-                textAlign: TextAlign.left,
-              )),
+          SizedBox(
+              width: double.infinity,
+              child: FlatButton(
+                  onPressed: () {
+                    DatePicker.showDateTimePicker(context,
+                        showTitleActions: true,
+                        minTime: DateTime(2020, 5, 5, 20, 50),
+                        maxTime: DateTime(2020, 6, 7, 05, 09),
+                        onChanged: (date) {
+                      print('change $date in time zone ' +
+                          date.timeZoneOffset.inHours.toString());
+                    }, onConfirm: (date) {
+                      print('confirm $date');
+                    }, locale: LocaleType.de);
+                  },
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                    'setDate',
+                    style: TextStyle(color: Colors.grey),
+                  )))),
         ],
       )),
     );

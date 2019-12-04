@@ -3,7 +3,7 @@ import 'MyType.dart';
 class Event extends MyType{
   final int id;
   final String name;
-  final String date;
+  final DateTime date;
 
   Event({this.id, this.name, this.date});
 
@@ -11,7 +11,7 @@ class Event extends MyType{
     return Event(
       id: json['id'] as int,
       name: json['name'] as String,
-      date: json['date'] as String,
+      date: json['date'] as DateTime,
     );
   }
   Map<String, dynamic> toJson() =>

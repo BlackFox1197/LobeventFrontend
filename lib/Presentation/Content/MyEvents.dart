@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyEvents extends StatelessWidget{
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,6 +12,12 @@ class MyEvents extends StatelessWidget{
           onPressed: () => Navigator.pop(context),
         ),
       ),
+      body: Container(
+        child: ListView.builder(
+          itemBuilder: (context, position) {
+          },
+    ),
+      )
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class EventAdd extends StatelessWidget {
+  String eventName;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +20,9 @@ class EventAdd extends StatelessWidget {
         children: <Widget>[
           TextFormField(
             decoration: InputDecoration(labelText: 'Enter EventName'),
+            onSaved: (String value) {
+              eventName = value;
+            },
           ),
           SizedBox(
               width: double.infinity,
@@ -38,9 +42,15 @@ class EventAdd extends StatelessWidget {
                   child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                    'setDate',
-                    style: TextStyle(color: Colors.grey),
-                  )))),
+                        'setDate',
+                        style: TextStyle(color: Colors.grey),
+                      )))),
+          FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: () {
+
+            },
+          )
         ],
       )),
     );

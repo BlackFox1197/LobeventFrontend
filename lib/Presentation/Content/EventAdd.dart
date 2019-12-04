@@ -2,9 +2,20 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:lobevent/Business/EventFunctions.dart';
+import 'package:lobevent/Data/Types/Event.dart';
 
-class EventAdd extends StatelessWidget {
-  String eventName;
+
+class EventAdd extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _AddEventState();
+}
+
+class _AddEventState extends State<EventAdd> {
+  DateTime date;
+
+  final _nameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,42 +28,50 @@ class EventAdd extends StatelessWidget {
       ),
       body: Container(
           child: Column(
-        children: <Widget>[
-          TextFormField(
-            decoration: InputDecoration(labelText: 'Enter EventName'),
-            onSaved: (String value) {
-              eventName = value;
-            },
-          ),
-          SizedBox(
-              width: double.infinity,
-              child: FlatButton(
-                  onPressed: () {
-                    DatePicker.showDateTimePicker(context,
-                        showTitleActions: true,
-                        minTime: DateTime(2020, 5, 5, 20, 50),
-                        maxTime: DateTime(2020, 6, 7, 05, 09),
-                        onChanged: (date) {
-                      print('change $date in time zone ' +
-                          date.timeZoneOffset.inHours.toString());
-                    }, onConfirm: (date) {
-                      print('confirm $date');
-                    }, locale: LocaleType.de);
-                  },
-                  child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'setDate',
-                        style: TextStyle(color: Colors.grey),
-                      )))),
-          FloatingActionButton(
-            child: Icon(Icons.add),
-            onPressed: () {
-
-            },
-          )
-        ],
-      )),
+            children: <Widget>[
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Enter EventName'),
+                controller: _nameController,
+              ),
+              SizedBox(
+                  width: double.infinity,
+                  child: FlatButton(
+                      onPressed: () {
+                        DatePicker.showDateTimePicker(context,
+                            showTitleActions: true,
+                            minTime: DateTime(2020, 5, 5, 20, 50),
+                            maxTime: DateTime(2020, 6, 7, 05, 09),
+                            onChanged: (date) {
+                              print('change $date in time zone ' +
+                                  date.timeZoneOffset.inHours.toString());
+                            }, onConfirm: (date) {
+                              this.date = date;
+                              print('confirm $date');
+                            }, locale: LocaleType.de);
+                      },
+                      child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'setDate',
+                            style: TextStyle(color: Colors.grey),
+                          )))),
+              FloatingActionButton(
+                child: Icon(Icons.add),
+                onPressed: () {
+                  _addEvent();
+                },
+              )
+            ],
+          )),
     );
+  }
+
+  void _addEvent() {
+    String eventName = _nameController.text;
+    Event event = new Event();
+    event.date = date;
+    event.name = eventName;
+    EventFunctions eventFunctions = new EventFunctions();
+    eventFunctions.addEvent(event);
   }
 }

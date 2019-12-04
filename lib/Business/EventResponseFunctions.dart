@@ -5,7 +5,7 @@ import 'package:lobevent/Services/Communication/UserEventStatusCommunicator.dart
 class EventResponseFunctions {
 
   UserEventStatusCommunicator communicator;
-  EventFunctions(){
+  EventResponseFunctions(){
     this.communicator = new UserEventStatusCommunicator();
   }
 

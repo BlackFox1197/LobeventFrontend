@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:lobevent/Business/EventResponseFunctions.dart';
 import 'package:lobevent/Data/Types/Event.dart';
 import 'package:lobevent/Services/Communication/EventCommunicator.dart';
 import 'EventAdd.dart';
@@ -15,7 +16,9 @@ class EventSwiperState extends State<EventSwiper> {
   EventSwiperState() {
     communicator = new EventCommunicator();
     eventsFutures = communicator.get();
+    ERfunctions = new EventResponseFunctions();
   }
+  EventResponseFunctions ERfunctions;
   EventCommunicator communicator;
   Future<List<Event>> eventsFutures;
   List<Event> eventlist;
@@ -28,6 +31,10 @@ class EventSwiperState extends State<EventSwiper> {
 
   Event next() {
     return eventlist.removeAt(0);
+  }
+
+  void sendResponse(int state){
+    ERfunctions.sendEventResponse(state, activeData.id);
   }
 
   @override
@@ -91,6 +98,7 @@ class EventSwiperState extends State<EventSwiper> {
                             minWidth: 70.0,
                             onPressed: () {
                               setState(() {
+                                sendResponse(1);
                                 activeData = next();
                               });
                             },
@@ -102,6 +110,7 @@ class EventSwiperState extends State<EventSwiper> {
                             minWidth: 70.0,
                             onPressed: () {
                               setState(() {
+                                sendResponse(0);
                                 activeData = next();
                               });
                             },

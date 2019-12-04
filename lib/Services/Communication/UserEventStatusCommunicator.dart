@@ -8,7 +8,7 @@ import 'package:lobevent/Services/Communication/config.dart';
 
 class UserEventStatusCommunicator extends Communication_Base
     implements Communication_Interface<UserEventStatus> {
-  static const String URL = ApiConfig.URL + ApiConfig.eventPath + "/1";
+  static const String URL = ApiConfig.URL + ApiConfig.userEventStatusPath + "/1";
 
   UserEventStatusCommunicator() : super();
 
@@ -39,6 +39,7 @@ class UserEventStatusCommunicator extends Communication_Base
   void post(UserEventStatus userEventStatus) async {
     //TODO: implement errorHandling
     final String jsonEvent = jsonEncode(userEventStatus.toJson());
+    print(jsonEvent);
     await client.post(URL, data: jsonEvent);
   }
 }

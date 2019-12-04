@@ -20,7 +20,7 @@ class Event extends MyType{
   Map<String, dynamic> toJson() =>
       {
         'name' : name,
-        'date' : date,
+        'date' : date.toIso8601String(),
         'id'   : id,
         'user': {'id': userId}
       };

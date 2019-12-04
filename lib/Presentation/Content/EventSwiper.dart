@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lobevent/Data/Types/Event.dart';
 import 'package:lobevent/Services/Communication/EventCommunicator.dart';
 import 'EventAdd.dart';
+import 'MyEvents.dart';
 
 class EventSwiper extends StatefulWidget {
   @override
@@ -46,11 +47,23 @@ class EventSwiperState extends State<EventSwiper> {
             return CircularProgressIndicator();
           }),
               FloatingActionButton(
+                heroTag: 'btn1',
                 child: Icon(Icons.add),
                 onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => EventAdd())
+                  );
+                },
+
+              ),
+              FloatingActionButton(
+                heroTag: 'btn2',
+                child: Icon(Icons.favorite),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MyEvents())
                   );
                 },
 

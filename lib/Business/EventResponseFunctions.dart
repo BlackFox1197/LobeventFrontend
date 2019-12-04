@@ -2,7 +2,7 @@ import 'package:lobevent/Data/Types/UserEventStatus.dart';
 import 'package:lobevent/Services/Communication/EventCommunicator.dart';
 import 'package:lobevent/Services/Communication/UserEventStatusCommunicator.dart';
 
-class EventFunctions {
+class EventResponseFunctions {
 
   UserEventStatusCommunicator communicator;
   EventFunctions(){

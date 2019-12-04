@@ -8,7 +8,7 @@ import 'package:lobevent/Services/Communication/config.dart';
 
 class UserEventStatusCommunicator extends Communication_Base
     implements Communication_Interface<UserEventStatus> {
-  static const String URL = ApiConfig.URL + ApiConfig.eventPath;
+  static const String URL = ApiConfig.URL + ApiConfig.eventPath + "/1";
 
   UserEventStatusCommunicator() : super();
 

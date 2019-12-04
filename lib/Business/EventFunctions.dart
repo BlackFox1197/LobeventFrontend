@@ -11,4 +11,8 @@ class EventFunctions{
   void addEvent(Event event){
     communicator.post(event);
   }
+
+  Future<List<Event>> getOwnedUserEvents() {
+    communicator.getOwnedEvents();
+  }
 }

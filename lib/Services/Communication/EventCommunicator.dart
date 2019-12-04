@@ -8,6 +8,7 @@ import 'package:lobevent/Services/Communication/config.dart';
 class EventCommunicator extends Communication_Base
     implements Communication_Interface<Event> {
   static const String URL = ApiConfig.URL + ApiConfig.eventPath;
+  static const String USERURL = ApiConfig.URL + ApiConfig.userEvents;
 
   EventCommunicator() : super();
 
@@ -37,5 +38,14 @@ class EventCommunicator extends Communication_Base
     event.userId = 1;
     final String jsonEvent = jsonEncode(event.toJson());
     await client.post(URL, data: jsonEvent);
+  }
+
+  Future<List<Event>> getOwnedEvents() async {
+    final response = await client.get(USERURL);
+    List<Event> events = new List<Event>(); //init the List
+    List<dynamic> intermeanList = response.data;
+    events = intermeanList.map((i) => Event.fromJson(i)).toList();
+    //map the date form the decoded json to an list and call Event.fromJson for each of them
+    return events;
   }
 }

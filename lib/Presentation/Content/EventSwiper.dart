@@ -80,7 +80,6 @@ class EventSwiperState extends State<EventSwiper> {
 
   Widget getContent() {
     return Center(
-        child: Container(
             child: Card(
                 color: Colors.blueAccent,
                 child: Container(
@@ -115,6 +114,6 @@ class EventSwiperState extends State<EventSwiper> {
                               });
                             },
                           )
-                        ])))));
+                        ]))));
   }
 }

@@ -39,8 +39,8 @@ class _AddEventState extends State<EventAdd> {
                       onPressed: () {
                         DatePicker.showDateTimePicker(context,
                             showTitleActions: true,
-                            minTime: DateTime(2020, 5, 5, 20, 50),
-                            maxTime: DateTime(2020, 6, 7, 05, 09),
+                            minTime: DateTime(2019, 5, 5, 20, 50),
+                            maxTime: DateTime(2050, 6, 7, 05, 09),
                             onChanged: (date) {
                               print('change $date in time zone ' +
                                   date.timeZoneOffset.inHours.toString());

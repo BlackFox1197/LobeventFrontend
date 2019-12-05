@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:lobevent/Business/EventResponseFunctions.dart';
 import 'package:lobevent/Data/Types/Event.dart';
+import 'package:lobevent/Presentation/Content/EventsSigned.dart';
 import 'package:lobevent/Services/Communication/EventCommunicator.dart';
 import 'EventAdd.dart';
 import 'MyEvents.dart';
@@ -66,11 +67,22 @@ class EventSwiperState extends State<EventSwiper> {
               ),
               FloatingActionButton(
                 heroTag: 'btn2',
-                child: Icon(Icons.favorite),
+                child: Icon(Icons.face),
                 onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => MyEvents())
+                  );
+                },
+
+              ),
+              FloatingActionButton(
+                heroTag: 'btn3',
+                child: Icon(Icons.thumb_up),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => EventsSigned())
                   );
                 },
 

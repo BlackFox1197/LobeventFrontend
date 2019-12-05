@@ -24,6 +24,7 @@ class MyEvents extends StatelessWidget {
             child: Icon(Icons.arrow_back),
             onPressed: () => Navigator.pop(context),
           ),
+
         ),
         body: Container(
             child: FutureBuilder<List<Event>>(
@@ -44,6 +45,7 @@ class MyEvents extends StatelessWidget {
       itemCount: items.length,
       itemBuilder: (context, index) {
         return ListTile(
+
           title: Text(items[index].name)
 
         );

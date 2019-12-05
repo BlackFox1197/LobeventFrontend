@@ -1,3 +1,4 @@
+import 'package:lobevent/Data/Types/Event.dart';
 import 'package:lobevent/Data/Types/UserEventStatus.dart';
 import 'package:lobevent/Services/Communication/UserEventStatusCommunicator.dart';
 
@@ -15,5 +16,9 @@ class EventResponseFunctions {
     userEventStatus.eventId = eventId;
     userEventStatus.status = response;
     communicator.post(userEventStatus);
+  }
+
+  Future<List<Event>> getEventsOfInterest() async{
+    return await communicator.getEventsOfInterrest();
   }
 }

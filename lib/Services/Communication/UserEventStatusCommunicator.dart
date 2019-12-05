@@ -22,6 +22,13 @@ class UserEventStatusCommunicator extends Communication_Base
     userEventStati = json.decode(response.data).map((i) => Event.fromJson(i)).toList();
     return userEventStati;
   }
+  Future<List<Event>> getEventsOfInterrest() async {
+    final response = await client.get(URL);
+    List<Event> userEventStati = new List<Event>(); //init the List
+    //map the date form the decoded json to an list and call Event.fromJson for each of them
+    userEventStati = json.decode(response.data).map((i) => Event.fromJson(i)).toList();
+    return userEventStati;
+  }
 
 
   ///returns an single event given the id

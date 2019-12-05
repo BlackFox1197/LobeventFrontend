@@ -12,7 +12,7 @@ class EventFunctions{
     communicator.post(event);
   }
 
-  Future<List<Event>> getOwnedUserEvents() {
-    communicator.getOwnedEvents();
+  Future<List<Event>> getOwnedUserEvents() async{
+    return await communicator.getOwnedEvents();
   }
 }

@@ -24,10 +24,12 @@ class UserEventStatusCommunicator extends Communication_Base
   }
   Future<List<Event>> getEventsOfInterrest() async {
     final response = await client.get(URL);
-    List<Event> userEventStati = new List<Event>(); //init the List
+    //init the List
     //map the date form the decoded json to an list and call Event.fromJson for each of them
-    userEventStati = json.decode(response.data).map((i) => Event.fromJson(i)).toList();
-    return userEventStati;
+    List<Event> events = new List<Event>(); //init the List
+    List<dynamic> intermeanList = response.data;
+    events = intermeanList.map((i) => Event.fromJson(i)).toList();
+    return events;
   }
 
 

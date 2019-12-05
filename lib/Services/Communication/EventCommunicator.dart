@@ -48,4 +48,8 @@ class EventCommunicator extends Communication_Base
     //map the date form the decoded json to an list and call Event.fromJson for each of them
     return events;
   }
+
+  void delete(int id) async {
+    await client.delete(URL + "/" + id.toString());
+  }
 }

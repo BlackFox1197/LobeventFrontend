@@ -48,7 +48,6 @@ class UserEventStatusCommunicator extends Communication_Base
   void post(UserEventStatus userEventStatus) async {
     //TODO: implement errorHandling
     final String jsonEvent = jsonEncode(userEventStatus.toJson());
-    print(jsonEvent);
     await client.post(URL, data: jsonEvent);
   }
 }

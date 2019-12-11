@@ -42,11 +42,18 @@ class LoginScreenState extends State<LoginScreen> {
                       color: Colors.amber,
                       child: Text('Login'),
                       onPressed: () {
-                        _login();
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => EventSwiper()));
+                        if (loginNameController.text == null ||
+                            passwordController.text == null ||
+                            loginNameController.text.length == 0 ||
+                            passwordController.text.length == 0) {
+                          falseInputs();
+                        } else {
+                          _login();
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => EventSwiper()));
+                        }
                       },
                     ),
                     MaterialButton(
@@ -64,6 +71,13 @@ class LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  //TODO; catch false Inputs
+  void falseInputs() {
+    Widget build(BuildContext context) {
+      return Center(child: Text('Please input name and password.'));
+    }
   }
 
   void _login() {

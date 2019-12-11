@@ -1,19 +1,20 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:lobevent/Presentation/Content/EventSwiper.dart';
-import 'package:lobevent/Presentation/Content/RegistrateScreen.dart';
+import 'package:lobevent/Presentation/Content/LoginScreen.dart';
 
-class LoginScreen extends StatefulWidget {
+class RegistrateScreen extends StatefulWidget {
   @override
-  LoginScreenState createState() => LoginScreenState();
+  RegistrateScreenState createState() => RegistrateScreenState();
 }
 
-class LoginScreenState extends State<LoginScreen> {
-  LoginScreenState();
+class RegistrateScreenState extends State<RegistrateScreen> {
+  RegistrateScreenState();
 
   final loginNameController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+  final emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class LoginScreenState extends State<LoginScreen> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         color: Colors.cyanAccent,
-        child: Stack(
+        child: ListView(
           children: <Widget>[
             Column(
               children: <Widget>[
@@ -35,40 +36,40 @@ class LoginScreenState extends State<LoginScreen> {
                   decoration: InputDecoration(labelText: 'Enter your Password'),
                   controller: passwordController,
                 ),
+                TextFormField(
+                  decoration:
+                      InputDecoration(labelText: 'Enter your Password again'),
+                  controller: confirmPasswordController,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Enter your e-mail'),
+                  controller: emailController,
+                ),
                 Row(
                   children: <Widget>[
                     MaterialButton(
                       minWidth: 50,
                       height: 20,
                       color: Colors.amber,
-                      child: Text('Login'),
+                      child: Text('Registrate'),
                       onPressed: () {
                         if (loginNameController.text == null ||
                             passwordController.text == null ||
                             loginNameController.text.length == 0 ||
-                            passwordController.text.length == 0) {
+                            passwordController.text.length == 0 ||
+                            passwordController.text !=
+                                confirmPasswordController.text ||
+                            emailController.text.length == 0) {
                           falseInputs();
                         } else {
-                          _login();
+                          _registrate();
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => EventSwiper()));
+                                  builder: (context) => LoginScreen()));
                         }
                       },
                     ),
-                    MaterialButton(
-                      minWidth: 50,
-                      height: 20,
-                      color: Colors.brown,
-                      child: Text('Registrate'),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => RegistrateScreen()));
-                      },
-                    )
                   ],
                 )
               ],
@@ -86,8 +87,9 @@ class LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  void _login() {
+  void _registrate() {
     String name = loginNameController.text;
     String password = passwordController.text;
+    String email = emailController.text;
   }
 }

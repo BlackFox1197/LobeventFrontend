@@ -47,6 +47,9 @@ class EventSwiperState extends State<EventSwiper> {
               future: eventsFutures,
               builder: (context, snapshot) {
             if (snapshot.hasData) {
+              if(eventlist == null){
+                return noContentLeft();
+              }
               init1(snapshot.data);
               return getContent();
             } else if (snapshot.hasError) {
@@ -127,5 +130,11 @@ class EventSwiperState extends State<EventSwiper> {
                             },
                           )
                         ]))));
+  }
+
+  Widget noContentLeft(){
+    return Center(
+      child: Text("no Events Left"),
+    );
   }
 }

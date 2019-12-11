@@ -32,14 +32,15 @@ class LoginScreenState extends State<LoginScreen> {
                   controller: loginNameController,
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Enter your Password'),
+                  decoration:
+                      InputDecoration(labelText: 'Enter your Password:'),
                   controller: passwordController,
                 ),
                 Row(
                   children: <Widget>[
                     MaterialButton(
                       minWidth: 50,
-                      height: 20,
+                      height: 40,
                       color: Colors.amber,
                       child: Text('Login'),
                       onPressed: () {
@@ -59,7 +60,7 @@ class LoginScreenState extends State<LoginScreen> {
                     ),
                     MaterialButton(
                       minWidth: 50,
-                      height: 20,
+                      height: 40,
                       color: Colors.brown,
                       child: Text('Registrate'),
                       onPressed: () {
@@ -68,6 +69,13 @@ class LoginScreenState extends State<LoginScreen> {
                             MaterialPageRoute(
                                 builder: (context) => RegistrateScreen()));
                       },
+                    ),
+
+                    ///TODO: implement forgot password function
+                    MaterialButton(
+                      minWidth: 50,
+                      height: 40,
+                      child: Text('Forgot Password'),
                     )
                   ],
                 )

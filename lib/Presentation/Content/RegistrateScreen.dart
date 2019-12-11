@@ -27,6 +27,20 @@ class RegistrateScreenState extends State<RegistrateScreen> {
           children: <Widget>[
             Column(
               children: <Widget>[
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: FloatingActionButton(
+                    heroTag: 'btn0',
+                    splashColor: Colors.cyanAccent,
+                    child: Icon(Icons.arrow_left),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
+                    },
+                  ),
+                ),
                 TextFormField(
                   decoration:
                       InputDecoration(labelText: 'Enter your username:'),

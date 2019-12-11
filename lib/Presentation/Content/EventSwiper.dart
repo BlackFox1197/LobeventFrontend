@@ -114,37 +114,43 @@ class EventSwiperState extends State<EventSwiper> {
                     //crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
                       Text(activeData.name),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          MaterialButton(
-                            color: Colors.red,
-                            child: Icon(Icons.delete),
-                            height: 40.0,
-                            minWidth: 70.0,
-                            onPressed: () {
-                              setState(() {
-                                sendResponse(1);
-                                activeData = next();
-                              });
-                            },
-                          ),
-                          MaterialButton(
-                            color: Colors.green,
-                            child: Icon(Icons.add_circle),
-                            height: 40.0,
-                            minWidth: 70.0,
-                            onPressed: () {
-                              setState(() {
-                                sendResponse(0);
-                                activeData = next();
-                              });
-                            },
-                          ),
-                        ],
-                      ),
+                      ButtonYesNoRow(),
                     ]))));
+  }
+
+  Widget EventCard(Event event) {}
+
+  Widget ButtonYesNoRow() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        MaterialButton(
+          color: Colors.red,
+          child: Icon(Icons.delete),
+          height: 40.0,
+          minWidth: 70.0,
+          onPressed: () {
+            setState(() {
+              sendResponse(1);
+              activeData = next();
+            });
+          },
+        ),
+        MaterialButton(
+          color: Colors.green,
+          child: Icon(Icons.add_circle),
+          height: 40.0,
+          minWidth: 70.0,
+          onPressed: () {
+            setState(() {
+              sendResponse(0);
+              activeData = next();
+            });
+          },
+        ),
+      ],
+    );
   }
 
   Widget noContentLeft() {

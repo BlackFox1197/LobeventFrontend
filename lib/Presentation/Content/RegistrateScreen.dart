@@ -19,6 +19,13 @@ class RegistrateScreenState extends State<RegistrateScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Registrate'),
+        leading: MaterialButton(
+          child: Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -29,17 +36,6 @@ class RegistrateScreenState extends State<RegistrateScreen> {
               children: <Widget>[
                 Container(
                   alignment: Alignment.topLeft,
-                  child: FloatingActionButton(
-                    heroTag: 'btn0',
-                    splashColor: Colors.cyanAccent,
-                    child: Icon(Icons.arrow_left),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginScreen()));
-                    },
-                  ),
                 ),
                 TextFormField(
                   decoration:

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:lobevent/Business/EventResponseFunctions.dart';
 import 'package:lobevent/Data/Types/Event.dart';
 import 'package:lobevent/Presentation/Content/EventsSigned.dart';
@@ -52,7 +53,7 @@ class EventSwiperState extends State<EventSwiper> {
                 if (eventlist == null) {
                   return noContentLeft();
                 }
-                return getContent();
+                return getContentEventCard();
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }
@@ -103,22 +104,30 @@ class EventSwiperState extends State<EventSwiper> {
     );
   }
 
-  Widget getContent() {
-    return Center(
-        child: Card(
-            color: Colors.blueAccent,
-            child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                child: Column(mainAxisAlignment: MainAxisAlignment.center,
-                    //crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      Text(activeData.name),
-                      ButtonYesNoRow(),
-                    ]))));
+  Widget getContentEventCard() {
+    return Card(
+        color: Colors.blueAccent,
+        child: Container(
+          alignment: Alignment.topCenter,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+              //crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                Text(
+                  activeData.name,
+                  textAlign: TextAlign.center,
+                  textScaleFactor: 1.75,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  activeData.date.toString(),
+                  style: TextStyle(fontStyle: FontStyle.italic),
+                ),
+                ButtonYesNoRow(),
+              ]),
+        ));
   }
-
-  Widget EventCard(Event event) {}
 
   Widget ButtonYesNoRow() {
     return Row(

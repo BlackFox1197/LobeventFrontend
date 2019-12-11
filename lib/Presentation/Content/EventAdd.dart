@@ -26,7 +26,7 @@ class _AddEventState extends State<EventAdd> {
         ),
       ),
       body: Container(
-          child: Column(
+          child: ListView(
         children: <Widget>[
           TextFormField(
             decoration: InputDecoration(labelText: 'Enter EventName'),

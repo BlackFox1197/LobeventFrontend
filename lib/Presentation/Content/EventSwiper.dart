@@ -20,6 +20,7 @@ class EventSwiperState extends State<EventSwiper> {
     eventsFutures = communicator.get();
     ERfunctions = new EventResponseFunctions();
   }
+
   EventResponseFunctions ERfunctions;
   EventCommunicator communicator;
   Future<List<Event>> eventsFutures;
@@ -35,85 +36,88 @@ class EventSwiperState extends State<EventSwiper> {
     return eventlist.removeAt(0);
   }
 
-  void sendResponse(int state){
+  void sendResponse(int state) {
     ERfunctions.sendEventResponse(state, activeData.id);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-            children: <Widget>[
-            FutureBuilder<List<Event>>(
-              future: eventsFutures,
-              builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              if(eventlist == null){
-                return noContentLeft();
+      body: Stack(children: <Widget>[
+        FutureBuilder<List<Event>>(
+            future: eventsFutures,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                if (eventlist == null) {
+                  return noContentLeft();
+                }
+                init1(snapshot.data);
+                return getContent();
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
               }
-              init1(snapshot.data);
-              return getContent();
-            } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
-            }
-            return CircularProgressIndicator();
-          }),
+              return CircularProgressIndicator();
+            }),
+        Positioned(
+          bottom: 10,
+          left: MediaQuery.of(context).size.width / 2 - 24,
+          child: Column(
+            children: <Widget>[
               FloatingActionButton(
                 heroTag: 'btn1',
                 child: Icon(Icons.add),
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => EventAdd())
-                  );
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => EventAdd()));
                 },
-
               ),
               FloatingActionButton(
                 heroTag: 'btn2',
                 child: Icon(Icons.face),
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MyEvents())
-                  );
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => MyEvents()));
                 },
-
               ),
               FloatingActionButton(
                 heroTag: 'btn3',
                 child: Icon(Icons.thumb_up),
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => EventsSigned())
-                  );
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => EventsSigned()));
                 },
-
               ),
-              GestureDetector(
-              onVerticalDragUpdate: (dragUpdateDetails) {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PartyPhotos())
-                );
+            ],
+          ),
+        ),
+      ]),
+      /*GestureDetector(
+            onVerticalDragUpdate: (dragUpdateDetails) {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => PartyPhotos()));
             },
-              ),
-    ]));
+          ),
+           */
+    );
   }
 
   Widget getContent() {
     return Center(
-            child: Card(
-                color: Colors.blueAccent,
-                child: Container(
-                    width: 300,
-                    height: 400,
-                    child: Row(
+        child: Card(
+            color: Colors.blueAccent,
+            child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                    //crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      Text(activeData.name),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
-                          Text(activeData.name),
                           MaterialButton(
                             color: Colors.red,
                             child: Icon(Icons.delete),
@@ -137,13 +141,20 @@ class EventSwiperState extends State<EventSwiper> {
                                 activeData = next();
                               });
                             },
-                          )
-                        ]))));
+                          ),
+                        ],
+                      ),
+                    ]))));
   }
 
-  Widget noContentLeft(){
+  Widget noContentLeft() {
     return Center(
+        child: Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      color: Colors.blueAccent,
+      alignment: Alignment.center,
       child: Text("no Events Left"),
-    );
+    ));
   }
 }

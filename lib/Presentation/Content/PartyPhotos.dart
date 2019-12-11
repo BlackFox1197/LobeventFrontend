@@ -5,15 +5,15 @@ class PartyPhotos extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-          child: Column(
-            children: <Widget>[
-              GestureDetector(
-                onVerticalDragUpdate: (dragUpdateDetails) {
-                  Navigator.of(context).pop();
-                },
-              )
-            ],
-          ),
-        ));
+      child: Column(
+        children: <Widget>[
+          GestureDetector(
+            onVerticalDragUpdate: (dragUpdateDetails) {
+              Navigator.of(context).pop();
+            },
+          )
+        ],
+      ),
+    ));
   }
 }

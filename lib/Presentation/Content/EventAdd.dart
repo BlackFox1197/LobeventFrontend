@@ -34,7 +34,7 @@ class _AddEventState extends State<EventAdd> {
           ),
           SizedBox(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height - 200,
+              height: MediaQuery.of(context).size.height - 210,
               child: FlatButton(
                   onPressed: () {
                     DatePicker.showDateTimePicker(context,

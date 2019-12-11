@@ -5,7 +5,6 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:lobevent/Business/EventFunctions.dart';
 import 'package:lobevent/Data/Types/Event.dart';
 
-
 class EventAdd extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _AddEventState();
@@ -28,41 +27,42 @@ class _AddEventState extends State<EventAdd> {
       ),
       body: Container(
           child: Column(
-            children: <Widget>[
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Enter EventName'),
-                controller: _nameController,
-              ),
-              SizedBox(
-                  width: double.infinity,
-                  child: FlatButton(
-                      onPressed: () {
-                        DatePicker.showDateTimePicker(context,
-                            showTitleActions: true,
-                            minTime: DateTime(2019, 5, 5, 20, 50),
-                            maxTime: DateTime(2050, 6, 7, 05, 09),
-                            onChanged: (date) {
-                              print('change $date in time zone ' +
-                                  date.timeZoneOffset.inHours.toString());
-                            }, onConfirm: (date) {
-                              this.date = date;
-                              print('confirm $date');
-                            }, locale: LocaleType.de);
-                      },
-                      child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            'setDate',
-                            style: TextStyle(color: Colors.grey),
-                          )))),
-              FloatingActionButton(
-                child: Icon(Icons.add),
-                onPressed: () {
-                  _addEvent();
-                },
-              )
-            ],
-          )),
+        children: <Widget>[
+          TextFormField(
+            decoration: InputDecoration(labelText: 'Enter EventName'),
+            controller: _nameController,
+          ),
+          SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height - 200,
+              child: FlatButton(
+                  onPressed: () {
+                    DatePicker.showDateTimePicker(context,
+                        showTitleActions: true,
+                        minTime: DateTime(2019, 5, 5, 20, 50),
+                        maxTime: DateTime(2050, 6, 7, 05, 09),
+                        onChanged: (date) {
+                      print('change $date in time zone ' +
+                          date.timeZoneOffset.inHours.toString());
+                    }, onConfirm: (date) {
+                      this.date = date;
+                      print('confirm $date');
+                    }, locale: LocaleType.de);
+                  },
+                  child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Datum',
+                        style: TextStyle(color: Colors.grey),
+                      )))),
+          FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: () {
+              _addEvent();
+            },
+          )
+        ],
+      )),
     );
   }
 

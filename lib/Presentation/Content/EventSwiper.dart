@@ -7,6 +7,7 @@ import 'package:lobevent/Presentation/Content/EventsSigned.dart';
 import 'package:lobevent/Services/Communication/EventCommunicator.dart';
 import 'EventAdd.dart';
 import 'MyEvents.dart';
+import 'PartyPhotos.dart';
 
 class EventSwiper extends StatefulWidget {
   @override
@@ -86,7 +87,15 @@ class EventSwiperState extends State<EventSwiper> {
                   );
                 },
 
-              )
+              ),
+              GestureDetector(
+              onVerticalDragUpdate: (dragUpdateDetails) {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PartyPhotos())
+                );
+            },
+              ),
     ]));
   }
 

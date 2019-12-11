@@ -48,10 +48,10 @@ class EventSwiperState extends State<EventSwiper> {
             future: eventsFutures,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
+                init1(snapshot.data);
                 if (eventlist == null) {
                   return noContentLeft();
                 }
-                init1(snapshot.data);
                 return getContent();
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
@@ -60,7 +60,7 @@ class EventSwiperState extends State<EventSwiper> {
             }),
         Positioned(
           bottom: 10,
-          left: MediaQuery.of(context).size.width / 2 - 24,
+          left: MediaQuery.of(context).size.width / 2 - 28,
           child: Column(
             children: <Widget>[
               FloatingActionButton(

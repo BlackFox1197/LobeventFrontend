@@ -15,6 +15,10 @@ class MyEvents extends StatelessWidget {
     items = events;
   }
 
+  deleteEvent(int id){
+    eventFunctions.deleteEvent(id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +50,15 @@ class MyEvents extends StatelessWidget {
       itemBuilder: (context, index) {
         return ListTile(
 
-          title: Text(items[index].name)
+          title: Text(items[index].name),
+          trailing: FlatButton(
+            child: Icon(Icons.delete),
+            onPressed:() {
+              deleteEvent(items[index].id);
+            }
+
+          ),
+
 
         );
       },

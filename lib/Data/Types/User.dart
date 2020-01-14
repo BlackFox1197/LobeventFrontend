@@ -7,4 +7,10 @@ class User {
   User.fromJson(Map<String, dynamic> json)
       : username = json["name"],
         password = json["password"];
+
+  Map<String, dynamic> toJson() =>
+      {
+        'username' : username,
+        'password' : password,
+      };
 }

@@ -45,7 +45,7 @@ class LoginScreenState extends State<LoginScreen> {
                       height: 40,
                       color: Colors.amber,
                       child: Text('Login'),
-                      onPressed: () {
+                      onPressed: () async {
                         if (loginNameController.text == null ||
                             passwordController.text == null ||
                             loginNameController.text.length == 0 ||
@@ -55,7 +55,8 @@ class LoginScreenState extends State<LoginScreen> {
                           LoginCommunicator().sendLogin(
                               loginNameController.text,
                               passwordController.text);
-
+                          final storage = new FlutterSecureStorage();
+                          print(await storage.read(key: "JWT"));
                           Navigator.push(
                               context,
                               MaterialPageRoute(

@@ -14,6 +14,7 @@ class LoginScreen extends StatefulWidget {
 class LoginScreenState extends State<LoginScreen> {
   LoginScreenState();
 
+  bool progressIndicatorVisiblity = false;
   final loginNameController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -52,6 +53,7 @@ class LoginScreenState extends State<LoginScreen> {
                             passwordController.text.length == 0) {
                           falseInputs();
                         } else {
+                          progressIndicatorVisiblity = true;
                           await LoginCommunicator().sendLogin(
                               loginNameController.text,
                               passwordController.text);
@@ -84,6 +86,12 @@ class LoginScreenState extends State<LoginScreen> {
                       child: Text('Forgot Password'),
                     )
                   ],
+                ),
+                Visibility(
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  visible: progressIndicatorVisiblity,
                 )
               ],
             ),

@@ -17,6 +17,8 @@ class EventSwiper extends StatefulWidget {
 }
 
 class EventSwiperState extends State<EventSwiper> {
+
+
   EventSwiperState() {
     communicator = new EventCommunicator();
     eventsFutures = communicator.get();
@@ -29,12 +31,15 @@ class EventSwiperState extends State<EventSwiper> {
   List<Event> eventlist;
   Event activeData;
 
-  init1(List<Event> events) {
+  ///initializes the eventList
+  ///[events] is a list of events to initialize the class eventlist
+  initEventList(List<Event> events) {
     eventlist = events;
     if(eventlist != null)
       activeData = eventlist[0];
   }
 
+  ///returns an new enventlist with the current element removed
   Event next() {
     return eventlist.removeAt(0);
   }
@@ -51,7 +56,7 @@ class EventSwiperState extends State<EventSwiper> {
             future: eventsFutures,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                init1(snapshot.data);
+                initEventList(snapshot.data);
                 if (eventlist == null) {
                   return noContentLeft();
                 }
@@ -89,14 +94,6 @@ class EventSwiperState extends State<EventSwiper> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => EventsSigned()));
                 },
-              ),
-              FloatingActionButton(
-                heroTag: 'btn4',
-                child: Icon(Icons.ac_unit),
-                onPressed: () {
-                  navigatorKey.currentState.pushNamedAndRemoveUntil(
-                      '/', (Route<dynamic> route) => false);
-                }
               ),
             ],
           ),

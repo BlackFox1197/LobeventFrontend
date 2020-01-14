@@ -15,5 +15,22 @@ class Communication_Base{
     this.client.options.headers["Authorization"] = "Bearer $token";
   }
 
+
+  Future<Response> makeRequestAndHandleErrors(Function requestFunction) async{
+    Response response;
+    try{
+      response = await requestFunction();
+    }on DioError catch(e){
+      int statusCode = e.response.statusCode;
+      switch(statusCode){
+        case 401: break;
+        case 402: break;
+        case 404: break;
+        case 500: break;
+      }
+    }
+    return response;
+
+  }
   //dynamic HandleError(response) async
 }

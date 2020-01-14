@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:lobevent/Services/Communication/Communication_Base.dart';
 import 'package:lobevent/Services/Communication/Communication_Interface.dart';
 import 'package:lobevent/Services/Communication/config.dart';
+import 'package:lobevent/Data/Types/User.dart';
 
 ///Implements Methods to communicate to the Backend
 class LoginCommunicator extends Communication_Base {
@@ -12,7 +13,6 @@ class LoginCommunicator extends Communication_Base {
 
   void sendLogin(String name, String password) {
     //Send name and password to server
-    client.post(URL, data: name);
-    client.post(URL, data: password);
+    client.post(URL, data: User(name,password));
   }
 }

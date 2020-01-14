@@ -132,7 +132,7 @@ class EventSwiperState extends State<EventSwiper> {
         child: Container(
           alignment: Alignment.topCenter,
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
+          height: MediaQuery.of(context).size.height*0.9,
           child: Column(crossAxisAlignment: CrossAxisAlignment.center,
               //crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[

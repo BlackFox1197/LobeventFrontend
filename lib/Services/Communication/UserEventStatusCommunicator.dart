@@ -17,7 +17,11 @@ class UserEventStatusCommunicator extends Communication_Base
   /// The mapping from JSON to List of Events is done internally
   Future<List<UserEventStatus>> get() async {
     await this.addTokenHeader();
-    final response = await client.get(URL);
+    
+    final requestFunction = () async {client.get(URL);};
+    final response = await this.makeRequestAndHandleErrors(requestFunction);
+
+    
     List<UserEventStatus> userEventStati =
         new List<UserEventStatus>(); //init the List
     //map the date form the decoded json to an list and call Event.fromJson for each of them
@@ -29,7 +33,11 @@ class UserEventStatusCommunicator extends Communication_Base
   ///returns an list of events that could be interesting for the user
   Future<List<Event>> getEventsOfInterrest() async {
     await this.addTokenHeader();
-    final response = await client.get(URL);
+    
+    final requestFunction = () async {client.get(URL);};
+    final response = await this.makeRequestAndHandleErrors(requestFunction);
+
+    
     //init the List
     //map the date form the decoded json to an list and call Event.fromJson for each of them
     List<Event> events = new List<Event>(); //init the List
@@ -41,9 +49,15 @@ class UserEventStatusCommunicator extends Communication_Base
   ///returns an single event given the id
   Future<UserEventStatus> getByID(int id) async {
     await this.addTokenHeader();
-    final response = await client.get(URL +
+    
+    final requestFunction = () async {client.get(URL +
         "/" +
-        id.toString()); //assembling the string in the get() parameter for getting with id
+        id.toString());}; //assembling the string in the get() parameter for getting with id
+    final response = await this.makeRequestAndHandleErrors(requestFunction);
+
+    
+
+
     UserEventStatus userEventStatus =
         UserEventStatus.fromJson(json.decode(response.data));
     return userEventStatus;
@@ -55,6 +69,9 @@ class UserEventStatusCommunicator extends Communication_Base
     await this.addTokenHeader();
     //TODO: implement errorHandling
     final String jsonEvent = jsonEncode(userEventStatus.toJson());
-    await client.post(URL, data: jsonEvent);
+    final requestFunction = () async {client.post(URL, data: jsonEvent);};
+    final response = await this.makeRequestAndHandleErrors(requestFunction);
+
+    
   }
 }

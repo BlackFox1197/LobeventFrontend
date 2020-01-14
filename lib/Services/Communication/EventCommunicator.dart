@@ -28,9 +28,12 @@ class EventCommunicator extends Communication_Base
   ///Returns an single event given the id
   Future<Event> getByID(int id) async {
     await this.addTokenHeader();
-    final response = await client.get(URL +
-        "/" +
-        id.toString()); //assembling the string in the get() parameter for getting with id
+    final requestFunction = () async {
+      return await client.get(URL +
+        "/" + //assembling the string in the get() parameter for getting with id
+        id.toString());
+    };
+    final response = await this.makeRequestAndHandleErrors(requestFunction);
     Event event = Event.fromJson(response.data);
     return event;
   }
@@ -41,13 +44,19 @@ class EventCommunicator extends Communication_Base
     //TODO: implement errorHandling
     event.userId = 1;
     final String jsonEvent = jsonEncode(event.toJson());
-    await client.post(URL, data: jsonEvent);
+    final requestFunction = () async {return await client.post(URL, data: jsonEvent);};
+    await this.makeRequestAndHandleErrors(requestFunction);
   }
 
   ///returns an Future of an List of events that are owned by the user-
   Future<List<Event>> getOwnedEvents() async {
     await this.addTokenHeader();
-    final response = await client.get(USERURL);
+
+
+    final requestFunction = () async {await client.get(USERURL);};
+    final response = await this.makeRequestAndHandleErrors(requestFunction);
+
+
     List<Event> events = new List<Event>(); //init the List
     List<dynamic> intermeanList = response.data;
     events = intermeanList.map((i) => Event.fromJson(i)).toList();
@@ -58,6 +67,7 @@ class EventCommunicator extends Communication_Base
   ///sends an delete Request to the server
   void delete(int id) async {
     await this.addTokenHeader();
-    await client.delete(URL + "/" + id.toString());
+    final requestFunction = await () async {client.delete(URL + "/" + id.toString());};
+    await this.makeRequestAndHandleErrors(requestFunction);
   }
 }

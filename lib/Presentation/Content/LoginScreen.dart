@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lobevent/Presentation/Content/EventSwiper.dart';
 import 'package:lobevent/Presentation/Content/RegistrateScreen.dart';
 import 'package:lobevent/Services/Communication/LoginCommunicator.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -54,6 +55,7 @@ class LoginScreenState extends State<LoginScreen> {
                           LoginCommunicator().sendLogin(
                               loginNameController.text,
                               passwordController.text);
+
                           Navigator.push(
                               context,
                               MaterialPageRoute(

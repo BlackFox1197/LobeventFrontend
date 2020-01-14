@@ -3,6 +3,7 @@ import 'package:lobevent/Services/Communication/Communication_Base.dart';
 import 'package:lobevent/Services/Communication/Communication_Interface.dart';
 import 'package:lobevent/Services/Communication/config.dart';
 import 'package:lobevent/Data/Types/User.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 ///Implements Methods to communicate to the Backend
 class LoginCommunicator extends Communication_Base {
@@ -15,4 +16,9 @@ class LoginCommunicator extends Communication_Base {
     //Send name and password to server
     client.post(URL, data: User(name, password));
   }
+}
+void safeToken (String key) async{
+  final storage = new FlutterSecureStorage();
+  await storage.write(key: key);
+
 }

@@ -52,11 +52,11 @@ class LoginScreenState extends State<LoginScreen> {
                             passwordController.text.length == 0) {
                           falseInputs();
                         } else {
-                          LoginCommunicator().sendLogin(
+                          await LoginCommunicator().sendLogin(
                               loginNameController.text,
                               passwordController.text);
                           final storage = new FlutterSecureStorage();
-                          print(await storage.read(key: "JWT"));
+                          await print(await storage.read(key: "JWT"));
                           Navigator.push(
                               context,
                               MaterialPageRoute(

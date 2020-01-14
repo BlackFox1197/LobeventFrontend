@@ -13,6 +13,6 @@ class LoginCommunicator extends Communication_Base {
 
   void sendLogin(String name, String password) {
     //Send name and password to server
-    client.post(URL, data: User(name,password));
+    client.post(URL, data: User(name, password));
   }
 }

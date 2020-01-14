@@ -18,7 +18,7 @@ class UserEventStatus extends MyType {
   }
   Map<String, dynamic> toJson() => {
         'status': status,
-        'user': {'id' : userId},
-        'event': {'id' : eventId},
+        'user': {'id': userId},
+        'event': {'id': eventId},
       };
 }

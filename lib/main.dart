@@ -17,7 +17,10 @@ class MyApp extends StatelessWidget {
         title: 'Lobevent',
         initialRoute: '/',
         routes: {
-          '/' : (context) => LoginScreen(),
+          '/' :(context) => SafeArea(
+            child: LoginScreen(),
+          )
+
         },
       navigatorKey: navigatorKey,
     );

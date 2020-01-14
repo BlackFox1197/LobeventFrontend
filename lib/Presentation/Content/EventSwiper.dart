@@ -48,7 +48,9 @@ class EventSwiperState extends State<EventSwiper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _buildScrollable(context),
+      body: SafeArea(
+        child:_buildScrollable(context),
+      )
     );
   }
 

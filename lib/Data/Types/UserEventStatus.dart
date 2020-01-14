@@ -1,6 +1,6 @@
 //Status, userid, eventid
 import 'package:lobevent/Data/Types/MyType.dart';
-import 'package:lobevent/Data/Types/User.dart';
+import 'package:lobevent/Data/Types/Profile.dart';
 
 class UserEventStatus extends MyType {
   int status;

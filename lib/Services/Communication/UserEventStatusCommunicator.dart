@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:lobevent/Data/Types/Event.dart';
-import 'package:lobevent/Data/Types/User.dart';
+import 'package:lobevent/Data/Types/Profile.dart';
 import 'package:lobevent/Data/Types/UserEventStatus.dart';
 import 'package:lobevent/Services/Communication/Communication_Base.dart';
 import 'package:lobevent/Services/Communication/Communication_Interface.dart';

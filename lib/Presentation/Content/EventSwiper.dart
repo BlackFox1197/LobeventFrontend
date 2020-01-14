@@ -30,7 +30,8 @@ class EventSwiperState extends State<EventSwiper> {
 
   init1(List<Event> events) {
     eventlist = events;
-    activeData = eventlist[0];
+    if(eventlist != null)
+      activeData = eventlist[0];
   }
 
   Event next() {

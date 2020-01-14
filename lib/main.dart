@@ -2,12 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:lobevent/Presentation/Content/EventSwiper.dart';
 import 'package:lobevent/Presentation/Content/Eventpage.dart';
 import 'package:lobevent/Presentation/Content/LoginScreen.dart';
+final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 
-void main() => runApp(MyApp());
+void main(){
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Lobevent', home: LoginScreen());
+    return MaterialApp(
+        title: 'Lobevent',
+        initialRoute: '/',
+        routes: {
+          '/' : (context) => LoginScreen(),
+        },
+      navigatorKey: navigatorKey,
+    );
   }
 }

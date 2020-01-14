@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:lobevent/main.dart';
 
 class Communication_Base{
   Dio client;
@@ -16,6 +18,9 @@ class Communication_Base{
   }
 
 
+
+  ///
+  ///
   Future<Response> makeRequestAndHandleErrors(Function requestFunction) async{
     Response response;
     try{
@@ -23,7 +28,7 @@ class Communication_Base{
     }on DioError catch(e){
       int statusCode = e.response.statusCode;
       switch(statusCode){
-        case 401: break;
+        case 401: navigatorKey.currentState.pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false); break;
         case 402: break;
         case 404: break;
         case 500: break;

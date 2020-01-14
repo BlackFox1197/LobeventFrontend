@@ -6,6 +6,7 @@ import 'package:lobevent/Business/EventResponseFunctions.dart';
 import 'package:lobevent/Data/Types/Event.dart';
 import 'package:lobevent/Presentation/Content/EventsSigned.dart';
 import 'package:lobevent/Services/Communication/EventCommunicator.dart';
+import 'package:lobevent/main.dart';
 import 'EventAdd.dart';
 import 'MyEvents.dart';
 import 'PartyPhotos.dart';
@@ -88,6 +89,14 @@ class EventSwiperState extends State<EventSwiper> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => EventsSigned()));
                 },
+              ),
+              FloatingActionButton(
+                heroTag: 'btn4',
+                child: Icon(Icons.ac_unit),
+                onPressed: () {
+                  navigatorKey.currentState.pushNamedAndRemoveUntil(
+                      '/', (Route<dynamic> route) => false);
+                }
               ),
             ],
           ),

@@ -16,7 +16,8 @@ class EventCommunicator extends Communication_Base
   /// The mapping from JSON to List of Events is done internally
   Future<List<Event>> get() async {
     await this.addTokenHeader();
-    final response = await client.get(URL);
+    final requestFunction = () async {return await client.get(URL);};
+    final response = await this.makeRequestAndHandleErrors(requestFunction);
     List<Event> events = new List<Event>(); //init the List
     List<dynamic> intermeanList = response.data;
     events = intermeanList.map((i) => Event.fromJson(i)).toList();

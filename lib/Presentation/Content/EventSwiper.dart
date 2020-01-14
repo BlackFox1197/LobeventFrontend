@@ -17,8 +17,6 @@ class EventSwiper extends StatefulWidget {
 }
 
 class EventSwiperState extends State<EventSwiper> {
-
-
   EventSwiperState() {
     communicator = new EventCommunicator();
     eventsFutures = communicator.get();
@@ -35,8 +33,7 @@ class EventSwiperState extends State<EventSwiper> {
   ///[events] is a list of events to initialize the class eventlist
   initEventList(List<Event> events) {
     eventlist = events;
-    if(eventlist != null)
-      activeData = eventlist[0];
+    if (eventlist != null) activeData = eventlist[0];
   }
 
   ///returns an new enventlist with the current element removed
@@ -51,63 +48,78 @@ class EventSwiperState extends State<EventSwiper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(children: <Widget>[
-        FutureBuilder<List<Event>>(
-            future: eventsFutures,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                initEventList(snapshot.data);
-                if (eventlist == null) {
-                  return noContentLeft();
-                }
-                return getContentEventCard();
-              } else if (snapshot.hasError) {
-                return Text("${snapshot.error}");
-              }
-              return CircularProgressIndicator();
-            }),
-        Positioned(
-          bottom: 10,
-          left: MediaQuery.of(context).size.width / 2 - 28,
-          child: Column(
-            children: <Widget>[
-              FloatingActionButton(
-                heroTag: 'btn1',
-                child: Icon(Icons.add),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => EventAdd()));
-                },
+      body: _buildScrollable(context),
+    );
+  }
+
+  Widget _buildScrollable(BuildContext context) {
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverToBoxAdapter(
+          child: Stack(children: <Widget>[
+            FutureBuilder<List<Event>>(
+                future: eventsFutures,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    initEventList(snapshot.data);
+                    if (eventlist == null) {
+                      return noContentLeft();
+                    }
+                    return getContentEventCard();
+                  } else if (snapshot.hasError) {
+                    return Text("${snapshot.error}");
+                  }
+                  return CircularProgressIndicator();
+                }),
+            Positioned(
+              bottom: 10,
+              left: MediaQuery.of(context).size.width / 2 - 28,
+              child: Column(
+                children: <Widget>[
+                  FloatingActionButton(
+                    heroTag: 'btn1',
+                    child: Icon(Icons.add),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => EventAdd()));
+                    },
+                  ),
+                  FloatingActionButton(
+                    heroTag: 'btn2',
+                    child: Icon(Icons.face),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => MyEvents()));
+                    },
+                  ),
+                  FloatingActionButton(
+                    heroTag: 'btn3',
+                    child: Icon(Icons.thumb_up),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EventsSigned()));
+                    },
+                  ),
+                ],
               ),
-              FloatingActionButton(
-                heroTag: 'btn2',
-                child: Icon(Icons.face),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MyEvents()));
-                },
-              ),
-              FloatingActionButton(
-                heroTag: 'btn3',
-                child: Icon(Icons.thumb_up),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => EventsSigned()));
-                },
-              ),
-            ],
-          ),
+            ),
+          ]),
         ),
-      ]),
-      /*GestureDetector(
-            onVerticalDragUpdate: (dragUpdateDetails) {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => PartyPhotos()));
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+              return Container(
+                alignment: Alignment.center,
+                color: Colors.teal[100 * (index % 9)],
+                child: Text('Grid Item $index'),
+              );
             },
+            childCount: 20,
           ),
-           */
+        )
+      ],
     );
   }
 

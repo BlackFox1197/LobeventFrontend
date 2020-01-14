@@ -15,6 +15,7 @@ class EventCommunicator extends Communication_Base
   /// Returns an Future of a List of all events
   /// The mapping from JSON to List of Events is done internally
   Future<List<Event>> get() async {
+    await this.addTokenHeader();
     final response = await client.get(URL);
     List<Event> events = new List<Event>(); //init the List
     List<dynamic> intermeanList = response.data;
@@ -25,6 +26,7 @@ class EventCommunicator extends Communication_Base
 
   ///Returns an single event given the id
   Future<Event> getByID(int id) async {
+    await this.addTokenHeader();
     final response = await client.get(URL +
         "/" +
         id.toString()); //assembling the string in the get() parameter for getting with id
@@ -34,6 +36,7 @@ class EventCommunicator extends Communication_Base
 
   ///Posts an event to the WEB-API
   void post(Event event) async {
+    await this.addTokenHeader();
     //TODO: implement errorHandling
     event.userId = 1;
     final String jsonEvent = jsonEncode(event.toJson());
@@ -41,6 +44,7 @@ class EventCommunicator extends Communication_Base
   }
 
   Future<List<Event>> getOwnedEvents() async {
+    await this.addTokenHeader();
     final response = await client.get(USERURL);
     List<Event> events = new List<Event>(); //init the List
     List<dynamic> intermeanList = response.data;

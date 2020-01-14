@@ -6,15 +6,13 @@ class Communication_Base{
   FlutterSecureStorage storage;
   Communication_Base(){
     this.storage = new FlutterSecureStorage();
-    Future<String> token = this.getToken();
     this.client = new Dio();
 
-    this.client.options.headers["Authorization"] = "Bearer $token";
   }
 
-  Future<String> getToken()async{
-    String DBToken  = await storage.read(key: "JWT");
-    return DBToken;
+  void addTokenHeader() async{
+    String token  = await storage.read(key: "JWT");
+    this.client.options.headers["Authorization"] = "Bearer $token";
   }
 
   //dynamic HandleError(response) async

@@ -19,9 +19,10 @@ class LoginCommunicator extends Communication_Base {
 
   LoginCommunicator._({this.loginStorage}) : super();
 
+  ///send an login Request to the server
+  ///[name] is an login name and [password] is the password of the user
   Future<bool> sendLogin(String name, String password) async{
     //Send name and password to server
-
     new User(name, password);
     print((User(name, password)).toJson());
     final response = await client.post(URL, data: (User(name, password)).toJson());

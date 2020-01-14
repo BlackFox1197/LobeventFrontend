@@ -15,7 +15,6 @@ class UserEventStatusCommunicator extends Communication_Base
 
   /// Returns an Future of a List of all UserEventStatus
   /// The mapping from JSON to List of Events is done internally
-
   Future<List<UserEventStatus>> get() async {
     await this.addTokenHeader();
     final response = await client.get(URL);
@@ -27,6 +26,7 @@ class UserEventStatusCommunicator extends Communication_Base
     return userEventStati;
   }
 
+  ///returns an list of events that could be interesting for the user
   Future<List<Event>> getEventsOfInterrest() async {
     await this.addTokenHeader();
     final response = await client.get(URL);
@@ -50,6 +50,7 @@ class UserEventStatusCommunicator extends Communication_Base
   }
 
   ///Posts an event to the WEB-API
+  ///[userEventStatus] is an instance of UserEventStatus
   void post(UserEventStatus userEventStatus) async {
     await this.addTokenHeader();
     //TODO: implement errorHandling

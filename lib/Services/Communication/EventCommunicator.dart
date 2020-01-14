@@ -44,6 +44,7 @@ class EventCommunicator extends Communication_Base
     await client.post(URL, data: jsonEvent);
   }
 
+  ///returns an Future of an List of events that are owned by the user-
   Future<List<Event>> getOwnedEvents() async {
     await this.addTokenHeader();
     final response = await client.get(USERURL);
@@ -54,7 +55,9 @@ class EventCommunicator extends Communication_Base
     return events;
   }
 
+  ///sends an delete Request to the server
   void delete(int id) async {
+    await this.addTokenHeader();
     await client.delete(URL + "/" + id.toString());
   }
 }

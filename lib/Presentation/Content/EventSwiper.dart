@@ -111,6 +111,7 @@ class EventSwiperState extends State<EventSwiper> {
     );
   }
 
+  ///returns an Widget with the current eventcard content
   Widget getContentEventCard() {
     return Card(
         color: Colors.blueAccent,
@@ -136,6 +137,7 @@ class EventSwiperState extends State<EventSwiper> {
         ));
   }
 
+  ///return an row with the yes or no Buttons
   Widget ButtonYesNoRow() {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -169,6 +171,7 @@ class EventSwiperState extends State<EventSwiper> {
     );
   }
 
+  ///return a widget for showing, if no content is left on the swiper
   Widget noContentLeft() {
     return Center(
         child: Container(

@@ -18,7 +18,7 @@ class UserEventStatusCommunicator extends Communication_Base
   Future<List<UserEventStatus>> get() async {
     await this.addTokenHeader();
     
-    final requestFunction = () async {client.get(URL);};
+    final requestFunction = () async {return await client.get(URL);};
     final response = await this.makeRequestAndHandleErrors(requestFunction);
 
     
@@ -34,7 +34,7 @@ class UserEventStatusCommunicator extends Communication_Base
   Future<List<Event>> getEventsOfInterrest() async {
     await this.addTokenHeader();
     
-    final requestFunction = () async {client.get(URL);};
+    final requestFunction = () async {return await client.get(URL);};
     final response = await this.makeRequestAndHandleErrors(requestFunction);
 
     
@@ -50,7 +50,7 @@ class UserEventStatusCommunicator extends Communication_Base
   Future<UserEventStatus> getByID(int id) async {
     await this.addTokenHeader();
     
-    final requestFunction = () async {client.get(URL +
+    final requestFunction = () async {return await client.get(URL +
         "/" +
         id.toString());}; //assembling the string in the get() parameter for getting with id
     final response = await this.makeRequestAndHandleErrors(requestFunction);
@@ -69,7 +69,7 @@ class UserEventStatusCommunicator extends Communication_Base
     await this.addTokenHeader();
     //TODO: implement errorHandling
     final String jsonEvent = jsonEncode(userEventStatus.toJson());
-    final requestFunction = () async {client.post(URL, data: jsonEvent);};
+    final requestFunction = () async {return await client.post(URL, data: jsonEvent);};
     final response = await this.makeRequestAndHandleErrors(requestFunction);
 
     

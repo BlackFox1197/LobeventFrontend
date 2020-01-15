@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:lobevent/Business/EventFunctions.dart';
 import 'package:lobevent/Data/Types/Event.dart';
 
-class MyEvents extends StatelessWidget {
-  MyEvents() {
+class MyEvents extends StatefulWidget {
+  @override
+  MyEventsState createState() => MyEventsState();
+}
+
+class MyEventsState extends State<MyEvents> {
+  MyEventsState() {
     eventFunctions = new EventFunctions();
     eventsFutures = eventFunctions.getOwnedUserEvents();
   }
@@ -15,8 +20,8 @@ class MyEvents extends StatelessWidget {
     items = events;
   }
 
-  deleteEvent(int id){
-    eventFunctions.deleteEvent(id);
+  Future<bool>deleteEvent(int id)async{
+    return eventFunctions.deleteEvent(id);
   }
 
   @override
@@ -53,8 +58,15 @@ class MyEvents extends StatelessWidget {
           title: Text(items[index].name),
           trailing: FlatButton(
             child: Icon(Icons.delete),
-            onPressed:() {
-              deleteEvent(items[index].id);
+            onPressed:() async{
+              bool success = await deleteEvent(items[index].id);
+              if(success){
+                setState(() {
+                  items.removeAt(index);
+                });
+              }
+
+
             }
 
           ),

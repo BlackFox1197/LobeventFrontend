@@ -1,4 +1,4 @@
-import 'MyType.dart';
+import 'package:lobevent/Data/Types/MyType.dart';
 
 class Event extends MyType{
   int id;

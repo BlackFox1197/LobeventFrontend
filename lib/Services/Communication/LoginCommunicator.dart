@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:lobevent/Data/Types/Response/LoginResponse.dart';
+import 'package:lobevent/Data/Types/Token.dart';
 import 'package:lobevent/Services/Communication/Communication_Base.dart';
 import 'package:lobevent/Services/Communication/Communication_Interface.dart';
 import 'package:lobevent/Services/Communication/config.dart';
@@ -26,7 +26,7 @@ class LoginCommunicator extends Communication_Base {
     new User(name, password);
     print((User(name, password)).toJson());
     final response = await client.post(URL, data: (User(name, password)).toJson());
-    final loginResponse = LoginResponse.fromJSON(response.data);
+    final loginResponse = Token.fromJSON(response.data);
     final bool success = await this.loginStorage.saveToken(loginResponse.token);
     return success;
 

@@ -3,13 +3,13 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:lobevent/Presentation/Content/LoginScreen.dart';
 
-class RegistrateScreen extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
   @override
-  RegistrateScreenState createState() => RegistrateScreenState();
+  RegisterScreenState createState() => RegisterScreenState();
 }
 
-class RegistrateScreenState extends State<RegistrateScreen> {
-  RegistrateScreenState();
+class RegisterScreenState extends State<RegisterScreen> {
+  RegisterScreenState();
 
   final loginNameController = TextEditingController();
   final passwordController = TextEditingController();
@@ -72,7 +72,7 @@ class RegistrateScreenState extends State<RegistrateScreen> {
                             emailController.text.length == 0) {
                           falseInputs();
                         } else {
-                          _registrate();
+                          _register();
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -97,7 +97,7 @@ class RegistrateScreenState extends State<RegistrateScreen> {
     }
   }
 
-  void _registrate() {
+  void _register() {
     String name = loginNameController.text;
     String password = passwordController.text;
     String email = emailController.text;

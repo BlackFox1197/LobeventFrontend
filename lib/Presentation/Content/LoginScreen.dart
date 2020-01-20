@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:lobevent/Presentation/Content/EventSwiper.dart';
-import 'package:lobevent/Presentation/Content/RegistrateScreen.dart';
+import 'package:lobevent/Presentation/Content/Feed.dart';
+import 'package:lobevent/Presentation/Content/RegisterScreen.dart';
 import 'package:lobevent/Services/Communication/LoginCommunicator.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -74,7 +74,7 @@ class LoginScreenState extends State<LoginScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => RegistrateScreen()));
+                                builder: (context) => RegisterScreen()));
                       },
                     ),
 

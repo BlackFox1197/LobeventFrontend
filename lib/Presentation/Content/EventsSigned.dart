@@ -14,38 +14,38 @@ class EventsSigned extends StatelessWidget {
   init1(List<Event> events) {
     items = events;
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('EventsSigned'),
-          leading: MaterialButton(
-            child: Icon(Icons.arrow_back),
-            onPressed: () => Navigator.pop(context),
-          ),
+      appBar: AppBar(
+        title: Text('EventsSigned'),
+        leading: MaterialButton(
+          child: Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
         ),
-        body: Container(
-            child: FutureBuilder<List<Event>>(
-                future: eventsFutures,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    init1(snapshot.data);
-                    return getContent();
-                  } else if (snapshot.hasError) {
-                    return Text("${snapshot.error}");
-                  }
-                  return CircularProgressIndicator();
-                })));
+      ),
+      body: Container(
+        child: FutureBuilder<List<Event>>(
+            future: eventsFutures,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                init1(snapshot.data);
+                return getContent();
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+              return CircularProgressIndicator();
+            }),
+      ),
+    );
   }
 
   Widget getContent() {
     return ListView.builder(
       itemCount: items.length,
       itemBuilder: (context, index) {
-        return ListTile(
-            title: Text(items[index].name)
-
-        );
+        return ListTile(title: Text(items[index].name));
       },
     );
   }

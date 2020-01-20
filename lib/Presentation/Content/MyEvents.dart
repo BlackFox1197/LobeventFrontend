@@ -20,33 +20,34 @@ class MyEventsState extends State<MyEvents> {
     items = events;
   }
 
-  Future<bool>deleteEvent(int id)async{
+  Future<bool> deleteEvent(int id) async {
     return eventFunctions.deleteEvent(id);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('MyEvents'),
-          leading: MaterialButton(
-            child: Icon(Icons.arrow_back),
-            onPressed: () => Navigator.pop(context),
-          ),
-
+      appBar: AppBar(
+        title: Text('MyEvents'),
+        leading: MaterialButton(
+          child: Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
         ),
-        body: Container(
-            child: FutureBuilder<List<Event>>(
-                future: eventsFutures,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    init1(snapshot.data);
-                    return getContent();
-                  } else if (snapshot.hasError) {
-                    return Text("${snapshot.error}");
-                  }
-                  return CircularProgressIndicator();
-                })));
+      ),
+      body: Container(
+        child: FutureBuilder<List<Event>>(
+            future: eventsFutures,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                init1(snapshot.data);
+                return getContent();
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+              return CircularProgressIndicator();
+            }),
+      ),
+    );
   }
 
   Widget getContent() {
@@ -54,24 +55,17 @@ class MyEventsState extends State<MyEvents> {
       itemCount: items.length,
       itemBuilder: (context, index) {
         return ListTile(
-
           title: Text(items[index].name),
           trailing: FlatButton(
-            child: Icon(Icons.delete),
-            onPressed:() async{
-              bool success = await deleteEvent(items[index].id);
-              if(success){
-                setState(() {
-                  items.removeAt(index);
-                });
-              }
-
-
-            }
-
-          ),
-
-
+              child: Icon(Icons.delete),
+              onPressed: () async {
+                bool success = await deleteEvent(items[index].id);
+                if (success) {
+                  setState(() {
+                    items.removeAt(index);
+                  });
+                }
+              }),
         );
       },
     );

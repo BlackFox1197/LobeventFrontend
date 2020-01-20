@@ -81,7 +81,7 @@ class RegistrateScreenState extends State<RegistrateScreen> {
                       },
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ],

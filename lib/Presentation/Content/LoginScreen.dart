@@ -91,7 +91,7 @@ class LoginScreenState extends State<LoginScreen> {
                     child: CircularProgressIndicator(),
                   ),
                   visible: progressIndicatorVisiblity,
-                )
+                ),
               ],
             ),
           ],

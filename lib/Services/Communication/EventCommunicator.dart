@@ -3,6 +3,7 @@ import 'package:lobevent/Data/Types/Event.dart';
 import 'package:lobevent/Services/Communication/Communication_Base.dart';
 import 'package:lobevent/Services/Communication/Communication_Interface.dart';
 import 'package:lobevent/Services/Communication/config.dart';
+import 'package:lobevent/Services/Storage/LoginStorage.dart';
 
 ///Implements Methods to communicate to the Backend
 class EventCommunicator extends Communication_Base
@@ -16,8 +17,12 @@ class EventCommunicator extends Communication_Base
   /// The mapping from JSON to List of Events is done internally
   Future<List<Event>> get() async {
     await this.addTokenHeader();
+
+
     final requestFunction = () async {return await client.get(URL);};
     final response = await this.makeRequestAndHandleErrors(requestFunction);
+
+
     List<Event> events = new List<Event>(); //init the List
     List<dynamic> intermeanList = response.data;
     events = intermeanList.map((i) => Event.fromJson(i)).toList();
@@ -53,7 +58,7 @@ class EventCommunicator extends Communication_Base
     await this.addTokenHeader();
 
 
-    final requestFunction = () async {await client.get(USERURL);};
+    final requestFunction = () async {return await client.get(USERURL);};
     final response = await this.makeRequestAndHandleErrors(requestFunction);
 
 
@@ -65,9 +70,14 @@ class EventCommunicator extends Communication_Base
   }
 
   ///sends an delete Request to the server
-  void delete(int id) async {
+  Future<bool> delete(int id) async {
     await this.addTokenHeader();
-    final requestFunction = await () async {client.delete(URL + "/" + id.toString());};
-    await this.makeRequestAndHandleErrors(requestFunction);
+    final requestFunction = () async {return await client.delete(URL + "/" + id.toString());};
+    final response = await this.makeRequestAndHandleErrors(requestFunction);
+    if(response.statusCode == 200){
+      return true;
+    }
+    return false;
+
   }
 }

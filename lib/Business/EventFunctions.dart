@@ -16,7 +16,7 @@ class EventFunctions{
     return await communicator.getOwnedEvents();
   }
 
-  void deleteEvent(int id){
-    communicator.delete(id);
+  Future<bool> deleteEvent(int id){
+    return communicator.delete(id);
   }
 }

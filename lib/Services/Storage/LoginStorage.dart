@@ -13,4 +13,9 @@ class LoginStorage{
     return false;
 
   }
+
+  void deleteToken() async{
+    final storage = new FlutterSecureStorage();
+    await storage.delete(key: "JWT");
+  }
 }

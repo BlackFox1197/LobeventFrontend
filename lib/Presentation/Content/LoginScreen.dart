@@ -58,7 +58,6 @@ class LoginScreenState extends State<LoginScreen> {
                               loginNameController.text,
                               passwordController.text);
                           final storage = new FlutterSecureStorage();
-                          await print(await storage.read(key: "JWT"));
                           Navigator.push(
                               context,
                               MaterialPageRoute(

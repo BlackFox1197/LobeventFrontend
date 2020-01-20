@@ -3,6 +3,8 @@ import 'package:lobevent/Presentation/Content/EventAdd.dart';
 import 'package:lobevent/Presentation/Content/Feed.dart';
 import 'package:lobevent/Presentation/Content/LoginScreen.dart';
 
+import 'Presentation/Layout/NavigationTemplate.dart';
+
 final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 
 void main() {
@@ -17,10 +19,10 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => SafeArea(
-          //child: Template(bottom Navigationbar)(
+          child: NavigationTemplate(
               child: Feed(),
             ),
-        //),
+        ),
         '/login': (context) => SafeArea(
               child: LoginScreen(),
             ),

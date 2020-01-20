@@ -77,8 +77,7 @@ class EventSwiperState extends State<EventSwiper> {
             heroTag: 'btn1',
             child: Icon(Icons.add),
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => EventAdd()));
+              Navigator.pushNamed(context ,'/addEvent');
             },
           ),
           FloatingActionButton(

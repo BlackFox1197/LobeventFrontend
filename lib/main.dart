@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lobevent/Presentation/Content/EventAdd.dart';
 import 'package:lobevent/Presentation/Content/Feed.dart';
 import 'package:lobevent/Presentation/Content/LoginScreen.dart';
+import 'package:lobevent/Presentation/CustomWidgets/RouteBackAppBar.dart';
 
 import 'Presentation/Layout/NavigationTemplate.dart';
 
@@ -18,15 +19,16 @@ class MyApp extends StatelessWidget {
       title: 'Lobevent',
       initialRoute: '/',
       routes: {
-        '/': (context) => SafeArea(
-          child: NavigationTemplate(
+        '/': (context) => NavigationTemplate(
               child: Feed(),
+              currentIndex: 0,
             ),
-        ),
         '/login': (context) => SafeArea(
               child: LoginScreen(),
             ),
-        '/addEvent': (context) => SafeArea(
+        '/addEvent': (context) => NavigationTemplate(
+              currentIndex: 1,
+              appBar: RouteBackAppBar(title: "Add Event", context: context,),
               child: EventAdd(),
             ),
       },

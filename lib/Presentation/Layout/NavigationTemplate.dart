@@ -1,32 +1,31 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class NavigationTemplate extends StatefulWidget {
-  Widget child;
-  NavigationTemplate({this.child});
-  @override
-  State<StatefulWidget> createState() =>
-      NavigationTemplateState(child: this.child);
-}
+class NavigationTemplate extends StatelessWidget {
+  final Widget child;
+  final int currentIndex;
+  final Widget appBar;
+  NavigationTemplate({this.child, this.currentIndex, this.appBar});
 
-class NavigationTemplateState extends State<NavigationTemplate> {
-  Widget child;
-  NavigationTemplateState({this.child});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(),
+      appBar: getAppBar(),
       body: child,
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0, // this will be set when a new tab is tapped
+        currentIndex: currentIndex, // this will be set when a new tab is tapped
         items: [
           BottomNavigationBarItem(
+
             icon: new Icon(Icons.home),
             title: new Text('Home'),
           ),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.mail),
-            title: new Text('Messages'),
+            icon: IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () => Navigator.pushNamed(context, "/addEvent"),
+            ),//new Icon(Icons.add),
+            title: new Text('Add'),
+
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.person),
@@ -37,7 +36,10 @@ class NavigationTemplateState extends State<NavigationTemplate> {
     );
   }
 
-  Widget appBar() {
+  Widget getAppBar() {
+    if(appBar != null){
+      return appBar;
+    }
     return AppBar(
       backgroundColor: Colors.indigoAccent,
       leading: Icon(Icons.settings),

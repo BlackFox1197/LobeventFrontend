@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => SafeArea(
           //child: Template(bottom Navigationbar)(
-              child: EventSwiper(),
+              child: Feed(),
             ),
         //),
         '/login': (context) => SafeArea(

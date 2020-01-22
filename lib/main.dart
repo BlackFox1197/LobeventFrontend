@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
               child: EventAdd(),
             ),
       },
+
       navigatorKey: navigatorKey,
     );
   }

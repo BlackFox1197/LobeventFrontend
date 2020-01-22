@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:lobevent/Presentation/Content/LoginScreen.dart';
+import 'package:lobevent/Services/Communication/RegistrationCommunicator.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -72,7 +73,8 @@ class RegisterScreenState extends State<RegisterScreen> {
                             emailController.text.length == 0) {
                           falseInputs();
                         } else {
-                          _register();
+                          RegistrationCommunicator().sendRegistration(
+                              emailController.text, passwordController.text);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -95,11 +97,5 @@ class RegisterScreenState extends State<RegisterScreen> {
     Widget build(BuildContext context) {
       return Center(child: Text('Please input name and password.'));
     }
-  }
-
-  void _register() {
-    String name = loginNameController.text;
-    String password = passwordController.text;
-    String email = emailController.text;
   }
 }

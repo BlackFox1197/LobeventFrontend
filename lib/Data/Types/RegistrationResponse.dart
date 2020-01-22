@@ -1,4 +1,3 @@
-
 class RegistrationResponse {
   bool success;
 

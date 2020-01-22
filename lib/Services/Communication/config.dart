@@ -4,5 +4,5 @@ class ApiConfig {
   static const String userEventStatusPath = "/user/eventStatus";
   static const String userEvents = "/user/events";
   static const String loginPath = "/login_check";
-  static const String registrationPath="/register";
+  static const String registrationPath = "/register";
 }

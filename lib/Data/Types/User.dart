@@ -10,7 +10,14 @@ class User {
 
   Map<String, dynamic> toJson() =>
       {
+        'email' : email,
+        'password' : password,
+      };
+
+  Map<String, dynamic> toLoginJson() =>
+      {
         'username' : email,
         'password' : password,
       };
+
 }

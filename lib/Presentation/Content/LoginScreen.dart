@@ -51,8 +51,8 @@ class LoginScreenState extends State<LoginScreen> {
                         } else {
                           progressIndicatorVisiblity = true;
                           await LoginCommunicator().sendLogin(
-                              loginNameController.text.trim(),
-                              passwordController.text.trim());
+                              loginNameController.text,
+                              passwordController.text);
                           Navigator.pushNamed(context, "/");
                         }
                       },

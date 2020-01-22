@@ -25,7 +25,6 @@ class RegisterScreenState extends State<RegisterScreen> {
         leading: MaterialButton(
           child: Icon(Icons.arrow_back),
           onPressed: () {
-            UserFunctions.register(loginNameController.text, passwordController.text);
             Navigator.pushNamed(context, "/");
           },
         ),
@@ -105,5 +104,6 @@ class RegisterScreenState extends State<RegisterScreen> {
     String name = loginNameController.text;
     String password = passwordController.text;
     String email = emailController.text;
+    UserFunctions.register(loginNameController.text, passwordController.text);
   }
 }

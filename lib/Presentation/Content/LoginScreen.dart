@@ -1,10 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:lobevent/Presentation/Content/Feed.dart';
 import 'package:lobevent/Presentation/Content/RegisterScreen.dart';
 import 'package:lobevent/Services/Communication/LoginCommunicator.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -57,11 +53,7 @@ class LoginScreenState extends State<LoginScreen> {
                           await LoginCommunicator().sendLogin(
                               loginNameController.text,
                               passwordController.text);
-                          final storage = new FlutterSecureStorage();
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Feed()));
+                          Navigator.pushNamed(context, "/");
                         }
                       },
                     ),

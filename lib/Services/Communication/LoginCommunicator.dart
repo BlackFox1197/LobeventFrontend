@@ -1,10 +1,7 @@
-import 'dart:convert';
 import 'package:lobevent/Data/Types/Token.dart';
 import 'package:lobevent/Services/Communication/Communication_Base.dart';
-import 'package:lobevent/Services/Communication/Communication_Interface.dart';
 import 'package:lobevent/Services/Communication/config.dart';
 import 'package:lobevent/Data/Types/User.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:lobevent/Services/Storage/LoginStorage.dart';
 
 ///Implements Methods to communicate to the Backend
@@ -23,9 +20,8 @@ class LoginCommunicator extends Communication_Base {
   ///[name] is an login name and [password] is the password of the user
   Future<bool> sendLogin(String name, String password) async{
     //Send name and password to server
-    new User(name, password);
-    print((User(name, password)).toJson());
-    final response = await client.post(URL, data: (User(name, password)).toJson());
+    final User user =new User(name, password);
+    final response = await client.post(URL, data: user.toJson());
     final loginResponse = Token.fromJSON(response.data);
     final bool success = await this.loginStorage.saveToken(loginResponse.token);
     return success;

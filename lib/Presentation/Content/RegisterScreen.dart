@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:lobevent/Business/UserFunctions.dart';
 import 'package:lobevent/Presentation/Content/LoginScreen.dart';
 import 'package:lobevent/Services/Communication/RegistrationCommunicator.dart';
 
@@ -24,7 +25,10 @@ class RegisterScreenState extends State<RegisterScreen> {
         title: Text('Registrate'),
         leading: MaterialButton(
           child: Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            UserFunctions.register(loginNameController.text, passwordController.text);
+            Navigator.pushNamed(context, "/");
+          },
         ),
       ),
       body: Container(

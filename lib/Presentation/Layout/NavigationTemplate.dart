@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:lobevent/Business/UserFunctions.dart';
 
 class NavigationTemplate extends StatelessWidget {
   final Widget child;
   final int currentIndex;
   final Widget appBar;
+  BuildContext context;
   NavigationTemplate({this.child, this.currentIndex, this.appBar});
 
   @override
   Widget build(BuildContext context) {
+    this.context = context;
     return Scaffold(
       appBar: getAppBar(),
       body: child,
@@ -43,7 +46,20 @@ class NavigationTemplate extends StatelessWidget {
     return AppBar(
       backgroundColor: Colors.indigoAccent,
       leading: Icon(Icons.settings),
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(Icons.exit_to_app),
+          onPressed: () => logout(),
+
+
+        )
+      ],
       title: Text("lobevent"),
     );
+  }
+
+  void logout(){
+    UserFunctions.logout();
+    Navigator.pushNamed(context, "/login");
   }
 }

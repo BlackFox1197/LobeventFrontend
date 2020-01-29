@@ -3,6 +3,7 @@ import 'package:lobevent/Presentation/Content/EventAdd.dart';
 import 'package:lobevent/Presentation/Content/Feed.dart';
 import 'package:lobevent/Presentation/Content/LoginScreen.dart';
 import 'package:lobevent/Presentation/CustomWidgets/RouteBackAppBar.dart';
+import 'package:lobevent/Presentation/CustomWidgets/ConnectionErrorWidget.dart';
 
 import 'Presentation/Layout/NavigationTemplate.dart';
 
@@ -28,11 +29,16 @@ class MyApp extends StatelessWidget {
             ),
         '/addEvent': (context) => NavigationTemplate(
               currentIndex: 1,
-              appBar: RouteBackAppBar(title: "Add Event", context: context,),
+              appBar: RouteBackAppBar(
+                title: "Add Event",
+                context: context,
+              ),
               child: EventAdd(),
             ),
+        '/httpError': (context) => SafeArea(
+              child: ConnectionErrorWidget(),
+            )
       },
-
       navigatorKey: navigatorKey,
     );
   }

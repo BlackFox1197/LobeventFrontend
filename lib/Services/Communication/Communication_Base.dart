@@ -31,14 +31,14 @@ class Communication_Base {
     } on DioError catch (e) {
       int statusCode = e.response.statusCode;
       switch (statusCode) {
-        case 402:
+        case 401:
           {
             ls.deleteToken();
             navigatorKey.currentState.pushNamedAndRemoveUntil(
                 '/login', (Route<dynamic> route) => false);
             break;
           }
-        case 401:
+        case 402:
           navigatorKey.currentState.pushNamed(
             '/httpError',
           );

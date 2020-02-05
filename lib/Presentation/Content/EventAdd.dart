@@ -18,13 +18,6 @@ class _AddEventState extends State<EventAdd> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('EventAdd'),
-        leading: MaterialButton(
-          child: Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
       body: Container(
         child: ListView(
           children: <Widget>[

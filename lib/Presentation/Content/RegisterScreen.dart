@@ -79,10 +79,7 @@ class RegisterScreenState extends State<RegisterScreen> {
                         } else {
                           RegistrationCommunicator().sendRegistration(
                               emailController.text, passwordController.text);
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginScreen()));
+                          Navigator.pushNamed(context, "/login");
                         }
                       },
                     ),

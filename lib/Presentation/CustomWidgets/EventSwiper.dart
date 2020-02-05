@@ -102,7 +102,7 @@ class EventSwiperState extends State<EventSwiper> {
             child: Icon(Icons.thumb_up),
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ProfilPage()));
+                  MaterialPageRoute(builder: (context) => ProfilePage()));
             },
           ),
         ],

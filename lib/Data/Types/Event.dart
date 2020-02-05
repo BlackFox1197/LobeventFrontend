@@ -13,7 +13,7 @@ class Event extends MyType{
         id: json['id'] as int,
         name: json['name'] as String,
         date: DateTime.parse(json['date']),
-        userId: json['user']['id'] as int
+        userId: json['profile']['id'] as int
     );
     return event;
   }
@@ -22,7 +22,7 @@ class Event extends MyType{
         'name' : name,
         'date' : date.toIso8601String(),
         'id'   : id,
-        'user': {'id': userId}
+        'profile': {'id': userId}
       };
 
 }

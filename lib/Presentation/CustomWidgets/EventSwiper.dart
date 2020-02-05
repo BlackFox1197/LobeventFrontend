@@ -5,6 +5,7 @@ import 'package:lobevent/Data/Types/Event.dart';
 import 'package:lobevent/Presentation/Content/EventAdd.dart';
 import 'package:lobevent/Presentation/Content/EventsSigned.dart';
 import 'package:lobevent/Presentation/Content/MyEvents.dart';
+import 'package:lobevent/Presentation/Content/ProfilePage.dart';
 import 'package:lobevent/Services/Communication/EventCommunicator.dart';
 
 class EventSwiper extends StatefulWidget {
@@ -94,6 +95,14 @@ class EventSwiperState extends State<EventSwiper> {
             onPressed: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => EventsSigned()));
+            },
+          ),
+          FloatingActionButton(
+            heroTag: 'btn4',
+            child: Icon(Icons.thumb_up),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProfilePage()));
             },
           ),
         ],

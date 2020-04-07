@@ -1,0 +1,11 @@
+{
+  "version": 0,
+  "id": "id",
+  "timeCreated": "2020-01-27T13:54:00Z",
+  "batteryPackVoltage": "batteryPackVoltage",
+  "batteryUnitcurrentRating": "batteryUnitcurrentRating",
+  "batteryUnitVoltageRating": "batteryUnitVoltageRating",
+  "manufacturer": "manufacturer",
+  "numberOfBatteries": "numberOfBatteries",
+  "type": "type"
+}

@@ -1,0 +1,22 @@
+{
+  "version": 0,
+  "id": "string",
+  "timeCreated": "2020-01-27T13:54:00Z",
+  "batteryChargeCurrent": "batteryChargeCurrent",
+  "batteryDischargeCurrent": "batteryDischargeCurrent",
+  "daqBatteryVoltage": "daqBatteryVoltage",
+  "inverterOutputVoltage": "inverterOutputVoltage",
+  "loadCurrentConsumption": "loadCurrentConsumption",
+  "measuredBatteryVoltage": "measuredBatteryVoltage",
+  "panelOutputCurrent": "panelOutputCurrent",
+  "panelOutputVoltage": "panelOutputVoltage",
+  "solarIrradiance": "solarIrradiance",
+  "timestamp": "timestamp",
+  "m_SolarInstallationDaq": {
+    "version": 0,
+    "id": "47ecc3ba-15cd-48e8-ae86-261a94f3c97a",
+    "timeCreated": "2020-01-27T14:03:12Z",
+    "daqID": null,
+    "daqMeasurement": null
+  }
+}

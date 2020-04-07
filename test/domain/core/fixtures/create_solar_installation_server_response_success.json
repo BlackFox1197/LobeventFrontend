@@ -1,0 +1,108 @@
+{
+  "customerId": "customerId",
+  "dateOfInstallation": "dateOfInstallation",
+  "expectedLoad": "expectedLoad",
+  "gpsLocationLong": "gpsLocationLong",
+  "gpsLocationLat": "gpsLocationLat",
+  "inputDCVoltage": "inputDCVoltage",
+  "numberOfInterventions": "numberOfInterventions",
+  "solarInstallationBatteryPack": {
+    "batteryPackVoltage": "batteryPackVoltage",
+    "batteryUnitCurrentRating": "batteryUnitCurrentRating",
+    "batteryUnitVoltageRating": "batteryUnitVoltageRating",
+    "manufacturer": "manufacturer",
+    "numberOfBatteries": "numberOfBatteries",
+    "type": "type"
+  },
+  "solarInstallationChargeController": {
+    "boostDuration": "boostDuration",
+    "boostReturnVoltage": "boostReturnVoltage",
+    "dischargeCurrent": "dischargeCurrent",
+    "dischargeReconnect": "dischargeReconnect",
+    "dischargeStop": "dischargeStop",
+    "equalizationVoltage": "equalizationVoltage",
+    "floatChargeVoltage": "floatChargeVoltage",
+    "highVoltageDisconnect": "highVoltageDisconnect",
+    "manufacturer": "manufacturer",
+    "maxSolarInput": "maxSolarInput",
+    "model": "model",
+    "operatingTemperature": "operatingTemperature",
+    "type": "type"
+  },
+  "solarInstallationDAQ": {
+    "id": "id",
+    "daqMeasurements": [
+      {
+        "batteryChargeCurrent": "batteryChargeCurrent",
+        "batteryDischargeCurrent": "batteryDischargeCurrent",
+        "daqBatteryVoltage": "daqBatteryVoltage",
+        "inverterOutputVoltage": "inverterOutputVoltage",
+        "loadCurrentConsumption": "loadCurrentConsumption",
+        "measuredBatteryVoltage": "measuredBatteryVoltage",
+        "panelOutputCurrent": "panelOutputCurrent",
+        "panelOutputVoltage": "panelOutputVoltage",
+        "solarIrradiance": "solarIrradiance",
+        "timestamp": "timestamp"
+      },
+      {
+        "batteryChargeCurrent": "batteryChargeCurrent",
+        "batteryDischargeCurrent": "batteryDischargeCurrent",
+        "daqBatteryVoltage": "daqBatteryVoltage",
+        "inverterOutputVoltage": "inverterOutputVoltage",
+        "loadCurrentConsumption": "loadCurrentConsumption",
+        "measuredBatteryVoltage": "measuredBatteryVoltage",
+        "panelOutputCurrent": "panelOutputCurrent",
+        "panelOutputVoltage": "panelOutputVoltage",
+        "solarIrradiance": "solarIrradiance",
+        "timestamp": "timestamp"
+      }
+    ]
+  },
+  "id": "id",
+  "solarInstallationInverter": {
+    "inputDCVoltage": "inputDCVoltage",
+    "kvaRating": "kvaRating",
+    "manufacturer": "manufacturer",
+    "outputACVoltage": "outputACVoltage",
+    "outputFrequency": "outputFrequency"
+  },
+  "solarInstallationPanels": {
+    "dimensionsLength": "dimensionsLength",
+    "dimensionsThickness": "dimensionsThickness",
+    "dimensionsWidth": "dimensionsWidth",
+    "installationVoltageRating": "installationVoltageRating",
+    "maxCurrent": "maxCurrent",
+    "maxFuseRating": "maxFuseRating",
+    "maxPowerRating": "maxPowerRating",
+    "maxPowerTolerance": "maxPowerTolerance",
+    "maxSystemVoltage": "maxSystemVoltage",
+    "maxVoltage": "maxVoltage",
+    "modelType": "modelType",
+    "nominalOperatingTemp": "nominalOperatingTemp",
+    "numberOfPanels": "numberOfPanels",
+    "openCctVolage": "openCctVolage",
+    "weight": "weight"
+  },
+  "solarInstallationWeather": {
+    "name": "name"
+  },
+  "solarInstallationNotes": [
+    {
+      "author": "author",
+      "note": "note",
+      "timestamp": "timestamp"
+    },
+    {
+      "author": "author",
+      "note": "note",
+      "timestamp": "timestamp"
+    },
+    {
+      "author": "author",
+      "note": "note",
+      "timestamp": "timestamp"
+    }
+  ],
+  "solarInstallationProviderId": "solarInstallationProviderId",
+  "assignedEmployeeIds": ["1", "2", "3"]
+}

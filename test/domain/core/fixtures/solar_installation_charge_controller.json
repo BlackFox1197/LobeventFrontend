@@ -1,0 +1,18 @@
+{
+  "version": 0,
+  "id": "string",
+  "timeCreated": "2020-01-27T13:54:00Z",
+  "boostDuration": "boostDuration",
+  "boostReturnVoltage": "boostReturnVoltage",
+  "dischargeCurrent": "dischargeCurrent",
+  "dischargeReconnect": "dischargeReconnect",
+  "dischargeStop": "dischargeStop",
+  "equalizationVoltage": "equalizationVoltage",
+  "floatChargeVoltage": "floatChargeVoltage",
+  "highVoltageDisconnect": "highVoltageDisconnect",
+  "manufacturer": "manufacturer",
+  "maxSolarInput": "maxSolarInput",
+  "model": "model",
+  "operatingTemperature": "operatingTemperature",
+  "type": "type"
+}

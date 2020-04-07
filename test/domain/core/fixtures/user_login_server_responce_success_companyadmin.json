@@ -1,0 +1,23 @@
+{
+  "status": "ok",
+  "user": {
+    "firstname": "John",
+    "lastname": "Jackson",
+    "id": "01234",
+    "email": "example@ex.com",
+    "country": "USA",
+    "state": "Georgia",
+    "postalcode": "17645",
+    "street": "FooBar Avenue",
+    "houseNumber": "4",
+    "phoneNumber": "+02356783564",
+    "companyName": "companyXYC",
+    "companyWebsite": "www.company.com",
+    "companyEmployeesIds": ["234234", "234234", "234234"],
+    "userType": "ADMIN",
+    "active": true,
+    "version": 0,
+    "timeCreated": "Jan 24, 2020 10:23:51 AM"
+  },
+  "token": "token"
+}

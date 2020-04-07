@@ -1,0 +1,21 @@
+{
+  "status": "ok",
+  "user": {
+    "firstname": "firstname",
+    "lastname": "lastname",
+    "id": "id",
+    "email": "email",
+    "country": "country",
+    "state": "state",
+    "postalcode": "postalcode",
+    "street": "street",
+    "houseNumber": "houseNumber",
+    "phoneNumber": "phoneNumber",
+    "solarServiceProviderId": "solarServiceProviderId",
+    "userType": "CUSTOMER",
+    "active": true,
+    "version": 0,
+    "timeCreated": "Jan 24, 2020 10:23:51 AM"
+  },
+  "token": "token"
+}

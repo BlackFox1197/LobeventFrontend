@@ -1,0 +1,20 @@
+{
+  "version": 0,
+  "id": "string",
+  "timeCreated": "2020-01-27T13:54:00Z",
+  "dimensionLength": "dimensionLength",
+  "dimensionThickness": "dimensionThickness",
+  "dimensionWidth": "dimensionWidth",
+  "installationVoltageRating": "installationVoltageRating",
+  "maxCurrent": "maxCurrent",
+  "maxFuseRating": "maxFuseRating",
+  "maxPowerRating": "maxPowerRating",
+  "maxPowerTolerance": "maxPowerTolerance",
+  "maxSystemVoltage": "maxSystemVoltage",
+  "maxVoltage": "maxVoltage",
+  "modelType": "modelType",
+  "nominalOperatingTemp": "nominalOperatingTemp",
+  "numberOfPanels": "numberOfPanels",
+  "openCctVoltage": "openCctVoltage",
+  "weight": "weight"
+}

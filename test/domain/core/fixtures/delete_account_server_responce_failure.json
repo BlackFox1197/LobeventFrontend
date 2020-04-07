@@ -1,0 +1,4 @@
+{
+  "success": "failure",
+  "message": "user could not be deleted because XYZ"
+}

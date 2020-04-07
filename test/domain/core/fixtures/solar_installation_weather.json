@@ -1,0 +1,33 @@
+{
+  "version": 0,
+  "id": "id",
+  "timeCreated": "2020-01-27T13:54:00Z",
+  "m_SolarInstallation": {
+    "version": 0,
+    "id": "83c8bca9-76c6-499e-aeef-075333738413",
+    "timeCreated": "2020-01-27T14:03:12Z",
+    "companyAdminId": null,
+    "companyEmployeeIds": null,
+    "customerId": null,
+    "dateOfInstallation": null,
+    "expectedLoad": null,
+    "gpsLocationLat": null,
+    "gpsLocationLong": null,
+    "inputDCVoltage": null,
+    "numberOfInterventions": null,
+    "solarInstallationId": null,
+    "solarInstalltionProvider": null,
+    "m_SolarInstallationBatteryPack": null,
+    "m_SolarInstallationInverter": null,
+    "m_SolarInstallationPanels": null,
+    "m_SolarInstallationDaq": null,
+    "m_SolarInstallationChargeController": null,
+    "solarInstallationBatteryPack": null,
+    "solarInstallationChargeController": null,
+    "solarInstallationDaq": null,
+    "solarInstallationInverter": null,
+    "solarInstallationNote": null,
+    "solarInstallationPanels": null,
+    "solarInstallationWeather": null
+  }
+}

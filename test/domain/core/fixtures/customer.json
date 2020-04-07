@@ -1,0 +1,19 @@
+{
+  "active": true,
+  "country": "string",
+  "email": "string",
+  "firstname": "string",
+  "houseNumber": "string",
+  "id": "string",
+  "lastname": "string",
+  "password": "string",
+  "phoneNumber": "string",
+  "postalcode": "string",
+  "solarServiceProvider": "string",
+  "state": "string",
+  "street": "string",
+  "timeCreated": "2020-01-31T13:04:48.408Z",
+  "uid": "string",
+  "userType": "CUSTOMER",
+  "version": 0
+}

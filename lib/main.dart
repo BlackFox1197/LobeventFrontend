@@ -1,45 +1,39 @@
+import 'package:auditergy_flutter/data/datasources/local_data_source/local_data_source.dart';
+import 'package:auditergy_flutter/ui/pages/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:lobevent/Presentation/Content/EventAdd.dart';
-import 'package:lobevent/Presentation/Content/Feed.dart';
-import 'package:lobevent/Presentation/Content/LoginScreen.dart';
-import 'package:lobevent/Presentation/CustomWidgets/RouteBackAppBar.dart';
-import 'package:lobevent/Presentation/CustomWidgets/ConnectionErrorWidget.dart';
+import 'package:auditergy_flutter/ui/pages/home/home_screen.dart';
+import 'package:auditergy_flutter/ui/pages/login/login.dart';
+import 'package:auditergy_flutter/ui/utils/color_constants.dart';
+import 'injection_container.dart' as di;
 
-import 'Presentation/Layout/NavigationTemplate.dart';
-
-final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
-
-void main() {
+void main() async {
+  // initialize the local data source
+  LocalDataSourceImpl localDataSource = new LocalDataSourceImpl();
+  await localDataSource.initializeLocalDataSource();
+  //(IV) here have to check if Hive for not browser before or after init di !
+  await di.init();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Map<String, WidgetBuilder> routes = {
+      '/': (BuildContext context) => HomeScreen(),
+      '/home': (BuildContext context) => HomeScreen(),
+      '/login': (BuildContext context) => Login(),
+      '/dashboard': (BuildContext context) => DashboardScreen(),
+    };
     return MaterialApp(
-      title: 'Lobevent',
       initialRoute: '/',
-      routes: {
-        '/': (context) => NavigationTemplate(
-              child: Feed(),
-              currentIndex: 0,
-            ),
-        '/login': (context) => SafeArea(
-              child: LoginScreen(),
-            ),
-        '/addEvent': (context) => NavigationTemplate(
-              currentIndex: 1,
-              appBar: RouteBackAppBar(
-                title: "Add Event",
-                context: context,
-              ),
-              child: EventAdd(),
-            ),
-        '/httpError': (context) => SafeArea(
-              child: ConnectionErrorWidget(),
-            )
-      },
-      navigatorKey: navigatorKey,
+      routes: routes,
+      theme: ThemeData(
+        fontFamily: 'HelveticaNeue',
+        canvasColor: ColorConstants
+            .grey, //this is going to color the drawer in both modes (small and big screen)
+      ),
+      debugShowCheckedModeBanner: false,
+      title: 'Auditergy | Solar Dashboard Monitoring',
     );
   }
 }

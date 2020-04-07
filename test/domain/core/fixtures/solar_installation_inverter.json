@@ -1,0 +1,10 @@
+{
+  "version": 0,
+  "id": "string",
+  "timeCreated": "2020-01-27T13:54:00Z",
+  "inputDCVoltage": "inputDCVoltage",
+  "kvaRating": "kvaRating",
+  "maunfacturer": "manufacturer",
+  "outputACVoltage": "outputACVoltage",
+  "outputFrequency": "outputFrequency"
+}
